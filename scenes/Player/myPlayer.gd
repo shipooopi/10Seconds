@@ -88,7 +88,7 @@ func _process(delta):
 	if (is_colliding()):
 		#throw signal? a
 		if(get_collider().get_collision_mask() == 4):
-			print("Colliding wtih something" + get_collider().get_name())
+			get_tree().reload_current_scene()
 			
 		var normal = get_collision_normal()
 		var final_movement = normal.slide(movement_remainder)

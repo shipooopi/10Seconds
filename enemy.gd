@@ -55,26 +55,5 @@ func _process(delta):
 		lastDistanceToA = 100000
 		
 	if (is_colliding()):
-		print("Colliding with: " + get_collider().get_name())
-		# Not sure, which is better
 		if(get_collider().get_name() == "Player"):
 			get_tree().reload_current_scene()
-#		if (get_collider().get_name() == "Death"):
-#			# TODO: Here Death!
-#			pass
-#			
-#			
-#		var normal = get_collision_normal()
-#		var final_movement = normal.slide(movement_remainder)
-#		speed.y = normal.slide(Vector2(0,speed.y)).y
-#		
-#		move(final_movement)
-#		
-#		if (normal.y <= -0.7):
-#			jump_count = 0
-#	
-#	if( (not is_colliding() or get_collision_normal().y > -0.7) && speed.y > 0 && jump_count == 0):
-#		# Todo: ghost jump
-#		jump_count += 1
-		
-	
