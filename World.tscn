@@ -25,7 +25,7 @@ extents = Vector2( 22.9219, 22.8557 )
 
 [node name="Level1" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( -472.87, -168.209 )
+transform/pos = Vector2( -837.441, -408.789 )
 
 [node name="Ground" type="Node2D" parent="."]
 
@@ -80,7 +80,6 @@ _update_shape_index = 0
 
 [node name="Ground2" type="Node2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 1154.41, 756.247 )
 transform/rot = 45.0
 
@@ -136,7 +135,8 @@ script/script = ExtResource( 2 )
 
 [node name="Enemy" type="KinematicBody2D" parent="."]
 
-transform/pos = Vector2( 779.035, 624.524 )
+editor/display_folded = true
+transform/pos = Vector2( 392.307, 435.793 )
 input/pickable = false
 shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -145,7 +145,7 @@ collision/layers = 4
 collision/mask = 4
 collision/margin = 0.08
 script/script = ExtResource( 3 )
-pointA = Vector2( 0, 0 )
+pointA = Vector2( -200, -200 )
 pointB = Vector2( 781.49, 646.624 )
 
 [node name="Sprite" type="Sprite" parent="Enemy"]
@@ -159,5 +159,7 @@ trigger = false
 _update_shape_index = 0
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -127.693, -5.55188 )
 
 

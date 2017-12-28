@@ -14,8 +14,8 @@ input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-collision/layers = 7
-collision/mask = 7
+collision/layers = 15
+collision/mask = 15
 collision/margin = 0.08
 script/script = ExtResource( 1 )
 
@@ -47,5 +47,15 @@ drag_margin/left = 0.2
 drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
+
+[node name="cannon" type="Node2D" parent="."]
+
+[node name="right" type="Position2D" parent="cannon"]
+
+transform/pos = Vector2( 30.3585, 5 )
+
+[node name="left" type="Position2D" parent="cannon"]
+
+transform/pos = Vector2( -30.3585, 5 )
 
 

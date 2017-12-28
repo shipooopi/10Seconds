@@ -25,10 +25,7 @@ const MAX_FALL_SPEED = 1400
 # TODO: set to var to change on runtime
 const MAX_JUMP_COUNT = 2
 
-
-
-
-
+const scn_bullet = preload("res://scenes/Bullet/playerBullet.tscn")
 
 func _ready():
 	set_process(true)
@@ -37,6 +34,19 @@ func _ready():
 	animation_player = get_node("/root/World/AnimationPlayer")
 	animation_player.play("Idle")
 	
+func create_bullet(pos):
+	var bullet = scn_bullet.instance()
+	bullet.set_pos(pos)
+	bullet.velocity = bullet.velocity * direction
+	utils.main_node.add_child(bullet)
+	
+func shoot():
+	var cannonPos
+	if(direction > 0):
+		cannonPos = get_node("cannon/right").get_global_pos()
+	else:
+		cannonPos = get_node("cannon/left").get_global_pos()
+	create_bullet(cannonPos)
 
 func _input(event):
 	if (jump_count < MAX_JUMP_COUNT and event.is_action_pressed("jump")):
@@ -44,6 +54,9 @@ func _input(event):
 		jump_count += 1
 	if (jump_count > 0 and event.is_action_released("jump") and speed.y < -RELEASED_JUMP_FORCE):
 		speed.y = -RELEASED_JUMP_FORCE
+		
+	if (event.is_action_pressed("shoot")):
+		shoot()
  
  
 func _process(delta):
@@ -86,8 +99,7 @@ func _process(delta):
 	var movement_remainder = move(velocity)
 	
 	if (is_colliding()):
-		#throw signal? a
-		if(get_collider().get_collision_mask() == 4):
+		if(get_collider().get_collision_mask() in [4, 8]):
 			get_tree().reload_current_scene()
 			
 		var normal = get_collision_normal()
