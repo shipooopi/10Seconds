@@ -86,6 +86,7 @@ func _process(delta):
 	var movement_remainder = move(velocity)
 	
 	if (is_colliding()):
+		#throw signal?
 		if(get_collider().get_collision_mask() == 4):
 			print("Colliding wtih something" + get_collider().get_name())
 			
