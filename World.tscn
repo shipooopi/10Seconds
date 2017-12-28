@@ -1,0 +1,178 @@
+[gd_scene load_steps=12 format=1]
+
+[ext_resource path="res://Level1.scn" type="PackedScene" id=1]
+[ext_resource path="res://animation/Idle.tres" type="Animation" id=2]
+[ext_resource path="res://animation/Walking.tres" type="Animation" id=3]
+[ext_resource path="res://Control.gd" type="Script" id=4]
+[ext_resource path="res://enemy.gd" type="Script" id=5]
+[ext_resource path="res://enemy.png" type="Texture" id=6]
+[ext_resource path="res://scenes/Player/myPlayer.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 343.064, 45.0406 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 147.613, 10 )
+
+[sub_resource type="Animation" id=3]
+
+resource/name = "Rest"
+length = 2.0
+loop = false
+step = 0.05
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 22.9219, 22.8557 )
+
+[node name="World" type="Node"]
+
+[node name="Level1" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( -472.87, -168.209 )
+
+[node name="Ground" type="Node2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 898.268, 752.217 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ground"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 4.5126, -3.05176e-05 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D"]
+
+transform/pos = Vector2( 4.5126, -3.05176e-05 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Ground1" type="Node2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 1278.22, 735.07 )
+transform/rot = 80.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ground1"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 124.536, -34.4016 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground1/StaticBody2D"]
+
+transform/pos = Vector2( 124.536, -34.4016 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Ground2" type="Node2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 1154.41, 756.247 )
+transform/rot = 45.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ground2"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 124.536, -34.4016 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2/StaticBody2D"]
+
+transform/pos = Vector2( 124.536, -34.4016 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/Idle = ExtResource( 2 )
+anims/Rest = SubResource( 3 )
+anims/Walking = ExtResource( 3 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+editor/display_folded = true
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 42.0
+margin/bottom = 42.0
+script/script = ExtResource( 4 )
+
+[node name="Enemy" type="KinematicBody2D" parent="."]
+
+transform/pos = Vector2( 779.035, 624.524 )
+input/pickable = false
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 4
+collision/mask = 4
+collision/margin = 0.08
+script/script = ExtResource( 5 )
+pointA = Vector2( 0, 0 )
+pointB = Vector2( 781.49, 646.624 )
+
+[node name="Sprite" type="Sprite" parent="Enemy"]
+
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Player" parent="." instance=ExtResource( 7 )]
+
+collision/layers = 7
+collision/mask = 7
+
+
