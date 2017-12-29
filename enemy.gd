@@ -20,12 +20,12 @@ var reachedPointA = false
 var changedPointRightNow = false
 
 # Constants
-const MAX_SPEED = 900
+const MAX_SPEED = 450
 const ACCELERATION = 3500
 const DECELERATION = 6000
 const SPEED_DIVISOR = 7
 
-
+export var life = 3 setget set_life
 
 func _ready():
 	set_process(true)
@@ -59,3 +59,8 @@ func _process(delta):
 	if (is_colliding()):
 		if(get_collider().get_name() == "Player"):
 			get_tree().reload_current_scene()
+			
+func set_life(new_value):
+	life = new_value
+	if(life <= 0):
+		queue_free()
