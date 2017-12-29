@@ -32,7 +32,7 @@ func _ready():
 	set_process_input(true)
 	sprite_node = get_node("Sprite")
 	animation_player = get_node("/root/World/AnimationPlayer")
-	animation_player.play("Idle")
+	#animation_player.play("Idle")
 	
 func create_bullet(pos):
 	var bullet = scn_bullet.instance()

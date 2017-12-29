@@ -25,6 +25,8 @@ const ACCELERATION = 3500
 const DECELERATION = 6000
 const SPEED_DIVISOR = 7
 
+
+
 func _ready():
 	set_process(true)
 	sprite_node = get_node("Sprite")

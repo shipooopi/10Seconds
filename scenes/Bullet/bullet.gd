@@ -12,7 +12,6 @@ func _ready():
 func _process(delta):
 	translate(velocity * delta)
 
-
 func create_flare():
 	var flare = scn_flare.instance()
 	flare.set_pos(get_pos())

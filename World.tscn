@@ -16,10 +16,10 @@ extents = Vector2( 343.064, 45.0406 )
 custom_solver_bias = 0.0
 extents = Vector2( 147.613, 10 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
-extents = Vector2( 22.9219, 22.8557 )
+extents = Vector2( 28.518, 29.0352 )
 
 [node name="World" type="Node"]
 
@@ -135,10 +135,9 @@ script/script = ExtResource( 2 )
 
 [node name="Enemy" type="KinematicBody2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 392.307, 435.793 )
 input/pickable = false
-shapes/0/shape = SubResource( 4 )
+shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 4
@@ -154,7 +153,7 @@ texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 trigger = false
 _update_shape_index = 0
 
