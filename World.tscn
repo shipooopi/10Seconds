@@ -146,6 +146,7 @@ collision/margin = 0.08
 script/script = ExtResource( 3 )
 pointA = Vector2( -180, 196.126 )
 pointB = Vector2( 402.858, 196.126 )
+life = 3
 
 [node name="Sprite" type="Sprite" parent="Enemy"]
 
@@ -160,5 +161,17 @@ _update_shape_index = 0
 [node name="Player" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( -127.693, -5.55188 )
+MAX_BLINK_COUNTER = 5
+MAX_INVIS_TIMER = 100
+MAX_SPEED = 900
+ACCELERATION = 3500
+DECELERATION = 6000
+SPEED_DIVISOR = 7
+JUMP_FORCE = 2000
+RELEASED_JUMP_FORCE = 800
+GRAVITY = 6000
+MAX_FALL_SPEED = 1400
+MAX_JUMP_COUNT = 2
+life = 3
 
 

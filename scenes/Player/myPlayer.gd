@@ -12,20 +12,28 @@ var velocity = Vector2()
 
 var jump_count = 0
 
-# Constants
-const MAX_SPEED = 900
-const ACCELERATION = 3500
-const DECELERATION = 6000
-const SPEED_DIVISOR = 7
+var got_hit = false
+var invis_timer = 0
+var blink_counter = 0
+export var MAX_BLINK_COUNTER = 5
+export var MAX_INVIS_TIMER = 100
 
-const JUMP_FORCE = 2000
-const RELEASED_JUMP_FORCE = 800
-const GRAVITY = 6000
-const MAX_FALL_SPEED = 1400
+# Constants
+export var MAX_SPEED = 900
+export var ACCELERATION = 3500
+export var DECELERATION = 6000
+export var SPEED_DIVISOR = 7
+
+export var JUMP_FORCE = 2000
+export var RELEASED_JUMP_FORCE = 800
+export var GRAVITY = 6000
+export var MAX_FALL_SPEED = 1400
 # TODO: set to var to change on runtime
-const MAX_JUMP_COUNT = 2
+export var MAX_JUMP_COUNT = 2
 
 const scn_bullet = preload("res://scenes/Bullet/playerBullet.tscn")
+
+export var life = 3 setget set_life
 
 func _ready():
 	set_process(true)
@@ -99,8 +107,10 @@ func _process(delta):
 	var movement_remainder = move(velocity)
 	
 	if (is_colliding()):
-		if(get_collider().get_collision_mask() in [4, 8]):
-			get_tree().reload_current_scene()
+		if((get_collider().get_collision_mask() in [4, 8] or got_hit) && invis_timer <= 0):
+			set_life(life - 1)
+			got_hit = false
+			invis_timer = MAX_INVIS_TIMER
 			
 		var normal = get_collision_normal()
 		var final_movement = normal.slide(movement_remainder)
@@ -114,5 +124,24 @@ func _process(delta):
 	if( (not is_colliding() or get_collision_normal().y > -0.7) && speed.y > 0 && jump_count == 0):
 		# Todo: ghost jump
 		jump_count += 1
-		
 	
+	if(invis_timer > 0):
+		if(invis_timer % 20 == 0):
+			blink_counter = MAX_BLINK_COUNTER
+			get_node("Sprite").hide()
+		invis_timer -= 1
+	if(blink_counter > 0):
+		blink_counter -= 1
+	else:
+		get_node("Sprite").show()
+		
+func set_life(new_value):
+	life = new_value
+	if(life <= 0):
+		get_tree().reload_current_scene()
+		print("DIED!")
+	pass
+
+func _got_hit():
+	if(invis_timer <= 0):
+		got_hit = true

@@ -27,10 +27,18 @@ const SPEED_DIVISOR = 7
 
 export var life = 3 setget set_life
 
+signal hit_the_player
+
 func _ready():
 	set_process(true)
 	sprite_node = get_node("Sprite")
 	directionToA = pointA - pointB
+	for index in range(get_parent().get_children().size()):
+		var node = get_parent().get_child(index)
+		if(node.get_name() == "Player"):
+			connect("hit_the_player", node, "_got_hit")
+	
+	
  
 func _process(delta):
 
@@ -58,7 +66,8 @@ func _process(delta):
 		
 	if (is_colliding()):
 		if(get_collider().get_name() == "Player"):
-			get_tree().reload_current_scene()
+			#get_tree().reload_current_scene()
+			emit_signal("hit_the_player")
 			
 func set_life(new_value):
 	life = new_value
