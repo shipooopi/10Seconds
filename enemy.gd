@@ -20,10 +20,11 @@ var reachedPointA = false
 var changedPointRightNow = false
 
 # Constants
-const MAX_SPEED = 450
-const ACCELERATION = 3500
-const DECELERATION = 6000
-const SPEED_DIVISOR = 7
+export var MAX_SPEED = 450
+export var ACCELERATION = 500
+export var DECELERATION = 400
+export var DECELERATION_DISTANCE = 275
+export var SPEED_DIVISOR = 5
 
 export var life = 3 setget set_life
 
@@ -43,10 +44,15 @@ func _ready():
 func _process(delta):
 
 	# MOVEMENT
-	if changedPointRightNow:
-		speed /= SPEED_DIVISOR
+	#if changedPointRightNow:
+	#	speed /= SPEED_DIVISOR
+	#	changedPointRightNow = false
 
-	speed += ACCELERATION * delta
+	if((get_pos().distance_to(pointA) < (DECELERATION_DISTANCE) and !reachedPointA) or 
+	(get_pos().distance_to(pointB) < (DECELERATION_DISTANCE) and reachedPointA)):
+		speed -= DECELERATION * delta
+	else:
+		speed += ACCELERATION * delta
 	speed = clamp(speed, 0, MAX_SPEED)
 		
 	velocity = speed * delta * directionToA.normalized()
@@ -57,12 +63,14 @@ func _process(delta):
 	elif get_pos().distance_to(pointA) >= lastDistanceToA and !reachedPointA:
 		reachedPointA = true
 		lastDistanceToB = 100000
+		changedPointRightNow = true
 	elif get_pos().distance_to(pointB) < lastDistanceToB and reachedPointA:
 		lastDistanceToB = get_pos().distance_to(pointB)
 		var movement_remainder = move(-velocity)
-	elif get_pos().distance_to(pointB) >= lastDistanceToB and reachedPointA:	#
+	elif get_pos().distance_to(pointB) >= lastDistanceToB and reachedPointA:
 		reachedPointA = false
 		lastDistanceToA = 100000
+		changedPointRightNow = true
 		
 	if (is_colliding()):
 		if(get_collider().get_name() == "Player"):
