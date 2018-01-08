@@ -25,6 +25,7 @@ export var DECELERATION = 6000
 export var SPEED_DIVISOR = 7
 
 export var JUMP_FORCE = 2000
+
 export var RELEASED_JUMP_FORCE = 800
 export var GRAVITY = 6000
 export var MAX_FALL_SPEED = 1400
@@ -33,13 +34,15 @@ export var MAX_JUMP_COUNT = 2
 
 const scn_bullet = preload("res://scenes/Bullet/playerBullet.tscn")
 
-export var life = 3 setget set_life
+var start_life = [1,2,3]
+var life setget set_life
 
 func _ready():
 	set_process(true)
 	set_process_input(true)
 	sprite_node = get_node("Sprite")
 	animation_player = get_node("/root/World/AnimationPlayer")
+	set_life(start_life[SaveFile._get_save_dictionary()["progress"]["life"]])
 	#animation_player.play("Idle")
 	
 func create_bullet(pos):
