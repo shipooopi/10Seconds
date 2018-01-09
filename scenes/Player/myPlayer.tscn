@@ -29,7 +29,6 @@ RELEASED_JUMP_FORCE = 800
 GRAVITY = 6000
 MAX_FALL_SPEED = 1400
 MAX_JUMP_COUNT = 2
-life = 3
 
 [node name="Sprite" type="Sprite" parent="."]
 

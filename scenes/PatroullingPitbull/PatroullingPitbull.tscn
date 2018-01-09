@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://scenes/PatroullingPitbull/PatroullingPitbull.gd" type="Script" id=1]
+[ext_resource path="res://scenes/PatroullingPitbull/enemy_small.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15, 15 )
+
+[node name="PatroullingPitbull" type="KinematicBody2D"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+MAX_SPEED_WALK = 200
+MAX_SPEED_SRINT = 700
+ACCELERATION = 1000
+SPEED_DIVISOR = 7
+JUMP_FORCE = 2000
+GRAVITY = 6000
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="RayCastDownRight" type="RayCast2D" parent="."]
+
+transform/pos = Vector2( 15.1366, 0.177395 )
+enabled = false
+cast_to = Vector2( 0, 20 )
+layer_mask = 1
+type_mask = 15
+
+[node name="RayCastDownLeft" type="RayCast2D" parent="."]
+
+transform/pos = Vector2( -15.1827, 0.13821 )
+enabled = false
+cast_to = Vector2( 0, 20 )
+layer_mask = 1
+type_mask = 15
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+
+transform/pos = Vector2( 15.3993, -0.00688088 )
+enabled = false
+cast_to = Vector2( 10, 0 )
+layer_mask = 1
+type_mask = 15
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+
+transform/pos = Vector2( -15.3807, 2.86102e-06 )
+enabled = false
+cast_to = Vector2( -10, 0 )
+layer_mask = 1
+type_mask = 15
+
+
