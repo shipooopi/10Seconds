@@ -22,6 +22,7 @@ tracks/0/keys = {
 
 [node name="Flare" type="Sprite"]
 
+visibility/opacity = 0.0
 transform/pos = Vector2( 0.0852585, 0 )
 texture = ExtResource( 1 )
 script/script = ExtResource( 2 )

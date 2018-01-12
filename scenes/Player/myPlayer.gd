@@ -37,6 +37,8 @@ const scn_bullet = preload("res://scenes/Bullet/playerBullet.tscn")
 var start_life = [1,2,3]
 var life setget set_life
 
+var playerInsideEnemy = false
+
 func _ready():
 	set_process(true)
 	set_process_input(true)
@@ -86,7 +88,6 @@ func _process(delta):
 		sprite_node.set_flip_h(false)
 	else:
 		input_direction = 0
-	
 	
 
 	# MOVEMENT
@@ -138,6 +139,9 @@ func _process(delta):
 	else:
 		get_node("Sprite").show()
 		
+	if(playerInsideEnemy && invis_timer <= 0):
+		_got_hit()
+		
 func set_life(new_value):
 	life = new_value
 	if(life <= 0):
@@ -148,3 +152,26 @@ func set_life(new_value):
 func _got_hit():
 	if(invis_timer <= 0):
 		got_hit = true
+
+func _on_Area2D_body_enter( body ):
+	if(body.get_name() == "Player"):
+		playerInsideEnemy = true
+		if(!got_hit):
+			_got_hit()
+	pass 
+
+func _on_Hitbox_body_enter( body ):
+	if(body.get_name() == "Player"):
+		playerInsideEnemy = true
+		if(!got_hit):
+			_got_hit()
+	pass # replace with function body
+
+func _on_Hitbox_body_exit( body ):
+	playerInsideEnemy = false
+	pass # replace with function body
+
+
+func _on_Area2D_body_exit( body ):
+	playerInsideEnemy = false
+	pass # replace with function body
