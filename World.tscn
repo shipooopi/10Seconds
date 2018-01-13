@@ -16,7 +16,6 @@ transform/pos = Vector2( -259.283, -257.788 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0

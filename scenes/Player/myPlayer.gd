@@ -110,12 +110,12 @@ func _process(delta):
 	
 	var movement_remainder = move(velocity)
 	
+	if(((is_colliding() && get_collider().get_collision_mask() in [4, 8]) or got_hit) && invis_timer <= 0):
+		set_life(life - 1)
+		got_hit = false
+		invis_timer = MAX_INVIS_TIMER
+	
 	if (is_colliding()):
-		if((get_collider().get_collision_mask() in [4, 8] or got_hit) && invis_timer <= 0):
-			set_life(life - 1)
-			got_hit = false
-			invis_timer = MAX_INVIS_TIMER
-			
 		var normal = get_collision_normal()
 		var final_movement = normal.slide(movement_remainder)
 		speed.y = normal.slide(Vector2(0,speed.y)).y
@@ -158,20 +158,26 @@ func _on_Area2D_body_enter( body ):
 		playerInsideEnemy = true
 		if(!got_hit):
 			_got_hit()
-	pass 
 
 func _on_Hitbox_body_enter( body ):
 	if(body.get_name() == "Player"):
 		playerInsideEnemy = true
 		if(!got_hit):
 			_got_hit()
-	pass # replace with function body
 
 func _on_Hitbox_body_exit( body ):
 	playerInsideEnemy = false
-	pass # replace with function body
 
 
 func _on_Area2D_body_exit( body ):
 	playerInsideEnemy = false
-	pass # replace with function body
+
+func _on_Area2DFlip_body_enter( body ):
+	if(body.get_name() == "Player"):
+		playerInsideEnemy = true
+		if(!got_hit):
+			_got_hit()
+
+
+func _on_Area2DFlip_body_exit( body ):
+	playerInsideEnemy = false
