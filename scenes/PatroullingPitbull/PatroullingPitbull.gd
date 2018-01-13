@@ -55,15 +55,16 @@ func _process(delta):
 		sprite_node.set_flip_h(false)
 		rayCastRight.set_enabled(false)
 		rayCastDownRight.set_enabled(false)
-		rayCastLeft.set_enabled(false)
-		rayCastDownLeft.set_enabled(true)
+		rayCastLeft.set_enabled(true)
+		rayCastDownLeft.set_enabled(false)
 
-	if((rayCastDownRight.is_enabled() && rayCastDownRight.is_colliding() == false) || 
-	(rayCastDownLeft.is_enabled() && rayCastDownLeft.is_colliding() == false) || 
-	(rayCastRight.is_enabled() && rayCastRight.is_colliding() == true && rayCastRight.get_collider().get_name() != "Player") ||
-	(rayCastLeft.is_enabled() && rayCastLeft.is_colliding() == true && rayCastLeft.get_collider().get_name() != "Player")):
+	if((rayCastDownRight.is_enabled() && !rayCastDownRight.is_colliding()) || 
+	(rayCastDownLeft.is_enabled() && !rayCastDownLeft.is_colliding()) || 
+	(rayCastRight.is_enabled() && rayCastRight.is_colliding() && rayCastRight.get_collider().get_name() != "Player") ||
+	(rayCastLeft.is_enabled() && rayCastLeft.is_colliding() && rayCastLeft.get_collider().get_name() != "Player")):
 		direction = direction * -1
 
+	print(str(direction))
 	# MOVEMENT
 	if justChangedDirections:
 		speed.x /= SPEED_DIVISOR

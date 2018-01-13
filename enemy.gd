@@ -64,6 +64,7 @@ func _process(delta):
 		reachedPointA = true
 		lastDistanceToB = 100000
 		changedPointRightNow = true
+		sprite_node.set_flip_h(false)
 	elif get_pos().distance_to(pointB) < lastDistanceToB and reachedPointA:
 		lastDistanceToB = get_pos().distance_to(pointB)
 		var movement_remainder = move(-velocity)
@@ -71,6 +72,7 @@ func _process(delta):
 		reachedPointA = false
 		lastDistanceToA = 100000
 		changedPointRightNow = true
+		sprite_node.set_flip_h(true)
 		
 	if (is_colliding()):
 		if(get_collider().get_name() == "Player"):

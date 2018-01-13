@@ -1,17 +1,17 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://Level1.scn" type="PackedScene" id=1]
 [ext_resource path="res://Control.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Enemy/Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Player/myPlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/LevelEnd/LevelEnd.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/PatroullingPitbull/PatroullingPitbull.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/ChainChomp/ChainChomp.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/ChainChomp/ChainChomp.tscn" type="PackedScene" id=6]
 
 [node name="World" type="Node"]
 
 [node name="Level1" parent="." instance=ExtResource( 1 )]
 
+editor/display_folded = true
 transform/pos = Vector2( -259.283, -257.788 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -37,8 +37,8 @@ script/script = ExtResource( 2 )
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
 
 editor/display_folded = true
-transform/pos = Vector2( 982.686, 350.07 )
-pointA = Vector2( 1050, 313.326 )
+transform/pos = Vector2( 923.961, 345.638 )
+pointA = Vector2( 900, 313.326 )
 pointB = Vector2( 400, 313.326 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
@@ -50,11 +50,7 @@ transform/pos = Vector2( 798.537, 177.089 )
 editor/display_folded = true
 transform/pos = Vector2( 1122.31, 16.3245 )
 
-[node name="PatroullingPitbull" parent="." instance=ExtResource( 6 )]
-
-transform/pos = Vector2( 630.13, 558.002 )
-
-[node name="ChainChomp" parent="." instance=ExtResource( 7 )]
+[node name="ChainChomp" parent="." instance=ExtResource( 6 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 374.161, 173.481 )
@@ -68,6 +64,7 @@ transform/pos = Vector2( 374.161, 173.481 )
 [connection signal="body_exit" from="ChainChomp/Hitbox" to="Player" method="_on_Hitbox_body_exit"]
 
 
+[editable path="Level1"]
 [editable path="Enemy"]
 [editable path="LevelEnd"]
 [editable path="ChainChomp"]

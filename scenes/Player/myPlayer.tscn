@@ -1,18 +1,18 @@
 [gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://scenes/Player/myPlayer.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Player/icon_small.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Player/Character.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 14.7338, 14.0888 )
+extents = Vector2( 5, 10.5534 )
 
 [node name="Player" type="KinematicBody2D"]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 5.38469 )
 shapes/0/trigger = false
 collision/layers = 15
 collision/mask = 15
@@ -20,22 +20,24 @@ collision/margin = 0.08
 script/script = ExtResource( 1 )
 MAX_BLINK_COUNTER = 5
 MAX_INVIS_TIMER = 100
-MAX_SPEED = 900
-ACCELERATION = 3500
-DECELERATION = 6000
-SPEED_DIVISOR = 7
-JUMP_FORCE = 2000
-RELEASED_JUMP_FORCE = 800
-GRAVITY = 6000
+MAX_SPEED = 400
+ACCELERATION = 2000
+DECELERATION = 4000
+SPEED_DIVISOR = 5
+JUMP_FORCE = 800
+RELEASED_JUMP_FORCE = 300
+GRAVITY = 2500
 MAX_FALL_SPEED = 1400
 MAX_JUMP_COUNT = 2
 
 [node name="Sprite" type="Sprite" parent="."]
 
 texture = ExtResource( 2 )
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
+transform/pos = Vector2( 0, 5.38469 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
@@ -44,10 +46,10 @@ _update_shape_index = 0
 
 [node name="right" type="Position2D" parent="cannon"]
 
-transform/pos = Vector2( 15, 4 )
+transform/pos = Vector2( 5.64765, 4.28341 )
 
 [node name="left" type="Position2D" parent="cannon"]
 
-transform/pos = Vector2( -15, 4 )
+transform/pos = Vector2( -5.55318, 4.28341 )
 
 
