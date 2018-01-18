@@ -25,10 +25,14 @@ export var DECELERATION = 6000
 export var SPEED_DIVISOR = 7
 
 export var JUMP_FORCE = 2000
-
 export var RELEASED_JUMP_FORCE = 800
 export var GRAVITY = 6000
 export var MAX_FALL_SPEED = 1400
+
+export var JUMP_FORCE_WATER = 400
+export var RELEASED_JUMP_FORCE_WATER = 150
+export var GRAVITY_WATER = 1250
+export var MAX_FALL_SPEED_WATER = 700
 # TODO: set to var to change on runtime
 export var MAX_JUMP_COUNT = 2
 
@@ -38,6 +42,7 @@ var start_life = [1,2,3]
 var life setget set_life
 
 var playerInsideEnemy = false
+var inWater = false
 
 func _ready():
 	set_process(true)
@@ -62,11 +67,18 @@ func shoot():
 	create_bullet(cannonPos)
 
 func _input(event):
-	if (jump_count < MAX_JUMP_COUNT and event.is_action_pressed("jump")):
-		speed.y = -JUMP_FORCE
-		jump_count += 1
-	if (jump_count > 0 and event.is_action_released("jump") and speed.y < -RELEASED_JUMP_FORCE):
-		speed.y = -RELEASED_JUMP_FORCE
+	if (inWater):
+		if (event.is_action_pressed("jump")):
+			speed.y = -JUMP_FORCE_WATER
+		if (event.is_action_released("jump") and speed.y < -RELEASED_JUMP_FORCE_WATER):
+			speed.y = -RELEASED_JUMP_FORCE_WATER
+	else:		
+		if (jump_count < MAX_JUMP_COUNT and event.is_action_pressed("jump")):
+			speed.y = -JUMP_FORCE
+			jump_count += 1
+		if (jump_count > 0 and event.is_action_released("jump") and speed.y < -RELEASED_JUMP_FORCE):
+			speed.y = -RELEASED_JUMP_FORCE
+		
 		
 	if (event.is_action_pressed("shoot")):
 		shoot()
@@ -101,9 +113,14 @@ func _process(delta):
 		
 	speed.x = clamp(speed.x, 0, MAX_SPEED)
 	
-	speed.y += GRAVITY * delta
-	if (speed.y > MAX_FALL_SPEED):
-		speed.y = MAX_FALL_SPEED
+	if(inWater):
+		speed.y += GRAVITY_WATER * delta
+		if (speed.y > MAX_FALL_SPEED_WATER):
+			speed.y = MAX_FALL_SPEED_WATER
+	else:
+		speed.y += GRAVITY * delta
+		if (speed.y > MAX_FALL_SPEED):
+			speed.y = MAX_FALL_SPEED
 		
 	velocity.x = speed.x * delta * direction
 	velocity.y = speed.y * delta
@@ -166,11 +183,13 @@ func _on_Hitbox_body_enter( body ):
 			_got_hit()
 
 func _on_Hitbox_body_exit( body ):
-	playerInsideEnemy = false
+	if(body.get_name() == "Player"):
+		playerInsideEnemy = false
 
 
 func _on_Area2D_body_exit( body ):
-	playerInsideEnemy = false
+	if(body.get_name() == "Player"):
+		playerInsideEnemy = false
 
 func _on_Area2DFlip_body_enter( body ):
 	if(body.get_name() == "Player"):
@@ -180,4 +199,15 @@ func _on_Area2DFlip_body_enter( body ):
 
 
 func _on_Area2DFlip_body_exit( body ):
-	playerInsideEnemy = false
+	if(body.get_name() == "Player"):
+		playerInsideEnemy = false
+
+
+func _on_Water_body_enter( body ):
+	if(body.get_name() == "Player"):
+		inWater = true
+		_got_hit()
+
+func _on_Water_body_exit( body ):
+	if(body.get_name() == "Player"):
+		inWater = false

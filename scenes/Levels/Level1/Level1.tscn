@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://scenes/Tileset/Background/BackgroundTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Fackel/Fackel.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Player/myPlayer.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Tileset/GroundTiles/GroundTileset_new.tres" type="TileSet" id=4]
+[ext_resource path="res://scenes/Tileset/GroundTiles/GroundTileset_new.tres" type="TileSet" id=3]
+[ext_resource path="res://scenes/Player/myPlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Tileset/GurkenTiles/GurkenTileset.tres" type="TileSet" id=5]
-[ext_resource path="res://scenes/Enemy/Enemy.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/Timer/Timer.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Water/Water.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Enemy/Enemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Timer/Timer.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 
@@ -67,14 +68,10 @@ transform/pos = Vector2( 704, 352 )
 
 transform/pos = Vector2( 416, 160 )
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 48, 496 )
-
 [node name="GroundTiles" type="TileMap" parent="."]
 
 mode = 0
-tile_set = ExtResource( 4 )
+tile_set = ExtResource( 3 )
 cell/size = Vector2( 32, 32 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -87,7 +84,15 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( 0, 9, 1, 13, 2, 13, 3, 13, 4, 13, 5, 13, 6, 13, 7, 13, 8, 13, 9, 13, 10, 13, 11, 13, 12, 13, 13, 13, 14, 13, 15, 13, 16, 13, 17, 13, 18, 13, 19, 13, 20, 13, 21, 13, 22, 13, 23, 13, 24, 13, 25, 13, 26, 13, 27, 13, 28, 13, 29, 9, 65536, 10, 65565, 8, 131072, 10, 131101, 8, 196608, 10, 196637, 8, 262144, 10, 262173, 8, 327680, 10, 327709, 8, 393216, 10, 393245, 8, 458752, 10, 458781, 8, 524288, 10, 524293, 0, 524294, 1, 524295, 1, 524296, 2, 524317, 8, 589824, 10, 589829, 11, 589853, 8, 655360, 9, 655361, 6, 655362, 6, 655363, 6, 655364, 6, 655365, 14, 655389, 8, 720896, 10, 720925, 8, 786432, 10, 786461, 8, 851968, 10, 851997, 8, 917504, 10, 917533, 8, 983040, 10, 983069, 8, 1048576, 9, 1048577, 1, 1048578, 1, 1048579, 1, 1048580, 1, 1048581, 1, 1048582, 1, 1048583, 1, 1048584, 1, 1048585, 1, 1048586, 1, 1048587, 1, 1048588, 1, 1048589, 1, 1048590, 1, 1048591, 1, 1048592, 1, 1048593, 1, 1048594, 1, 1048595, 1, 1048596, 1, 1048597, 1, 1048598, 1, 1048599, 1, 1048600, 1, 1048601, 1, 1048602, 1, 1048603, 1, 1048604, 1, 1048605, 9 )
+tile_data = IntArray( 0, 9, 1, 13, 2, 13, 3, 13, 4, 13, 5, 13, 6, 13, 7, 13, 8, 13, 9, 13, 10, 13, 11, 13, 12, 13, 13, 13, 14, 13, 15, 13, 16, 13, 17, 13, 18, 13, 19, 13, 20, 13, 21, 13, 22, 13, 23, 13, 24, 13, 25, 13, 26, 13, 27, 13, 28, 13, 29, 9, 65536, 10, 65565, 8, 131072, 10, 131101, 8, 196608, 10, 196637, 8, 262144, 10, 262173, 8, 327680, 10, 327709, 8, 393216, 10, 393245, 8, 458752, 10, 458781, 8, 524288, 9, 524289, 38, 524290, 24, 524291, 24, 524292, 24, 524293, 40, 524294, 1, 524295, 1, 524296, 2, 524317, 8, 589824, 9, 589825, 44, 589826, 36, 589827, 36, 589828, 36, 589829, 37, 589853, 8, 655360, 9, 655361, 13, 655362, 13, 655363, 13, 655364, 13, 655365, 14, 655389, 8, 720896, 10, 720925, 8, 786432, 10, 786442, 5, 786443, 6, 786444, 6, 786445, 7, 786461, 8, 851968, 10, 851997, 8, 917504, 10, 917533, 8, 983040, 10, 983069, 8, 1048576, 9, 1048577, 1, 1048578, 1, 1048579, 1, 1048580, 1, 1048581, 1, 1048582, 1, 1048583, 1, 1048584, 1, 1048585, 1, 1048586, 1, 1048587, 1, 1048588, 1, 1048589, 1, 1048590, 1, 1048591, 1, 1048592, 1, 1048593, 1, 1048594, 1, 1048595, 1, 1048596, 1, 1048597, 1, 1048598, 1, 1048599, 1, 1048600, 1, 1048601, 1, 1048602, 1, 1048603, 1, 1048604, 1, 1048605, 9 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 48, 496 )
+JUMP_FORCE_WATER = 400
+RELEASED_JUMP_FORCE_WATER = 150
+GRAVITY_WATER = 1250
+MAX_FALL_SPEED_WATER = 700
 
 [node name="GurkenTiles" type="TileMap" parent="."]
 
@@ -107,7 +112,15 @@ collision/mask = 8
 occluder/light_mask = 1
 tile_data = IntArray( 262174, 8, 589830, 1, 589832, 5, 655366, 1, 720900, 1, 720902, 5, 786436, 1, 786440, 0, 851972, 1, 851976, 1, 917508, 5, 917510, 0, 917512, 1, 983046, 1, 983048, 1 )
 
-[node name="Enemy" parent="." instance=ExtResource( 6 )]
+[node name="Water" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 80, 288 )
+
+[node name="CollisionShape2D" parent="Water"]
+
+transform/pos = Vector2( 32, 0 )
+
+[node name="Enemy" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 736, 464 )
 pointA = Vector2( 480, 464 )
@@ -122,7 +135,11 @@ transform/pos = Vector2( 0, 0 )
 anims/fly = SubResource( 1 )
 autoplay = "fly"
 
-[node name="Timer" parent="." instance=ExtResource( 7 )]
+[node name="Timer" parent="." instance=ExtResource( 8 )]
+
+[connection signal="body_enter" from="Water" to="Player" method="_on_Water_body_enter"]
+
+[connection signal="body_exit" from="Water" to="Player" method="_on_Water_body_exit"]
 
 [connection signal="body_enter" from="Enemy/Area2D" to="Player" method="_on_Area2D_body_enter"]
 
@@ -133,4 +150,5 @@ autoplay = "fly"
 [connection signal="body_exit" from="Enemy/Area2DFlip" to="Player" method="_on_Area2DFlip_body_exit"]
 
 
+[editable path="Water"]
 [editable path="Enemy"]
