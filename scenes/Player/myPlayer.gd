@@ -44,6 +44,8 @@ var life setget set_life
 var playerInsideEnemy = false
 var inWater = false
 
+signal test
+
 func _ready():
 	set_process(true)
 	set_process_input(true)
@@ -78,8 +80,15 @@ func _input(event):
 			jump_count += 1
 		if (jump_count > 0 and event.is_action_released("jump") and speed.y < -RELEASED_JUMP_FORCE):
 			speed.y = -RELEASED_JUMP_FORCE
-		
-		
+			
+	#TODO: use signals not get_tree.set_pause()!
+	if(event.is_action_pressed("time_freeze")):
+		set_pause_mode(2)
+		get_tree().set_pause(true)
+	if(event.is_action_released("time_freeze")):
+		set_pause_mode(0)
+		get_tree().set_pause(false)
+#		
 	if (event.is_action_pressed("shoot")):
 		shoot()
  
@@ -87,8 +96,10 @@ func _input(event):
 func _process(delta):
 	# INPUT
 	if Input.is_action_pressed("Restart"):
+		set_pause_mode(0)
+		get_tree().set_pause(false)
 		get_tree().reload_current_scene()
-	
+
 	if input_direction:
 		direction = input_direction
 
@@ -162,6 +173,8 @@ func _process(delta):
 func set_life(new_value):
 	life = new_value
 	if(life <= 0):
+		set_pause_mode(0)
+		get_tree().set_pause(false)
 		get_tree().reload_current_scene()
 		print("DIED!")
 	pass
