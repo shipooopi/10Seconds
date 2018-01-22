@@ -58,14 +58,17 @@ tile_data = IntArray( 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8, 0, 9, 0
 
 [node name="Fackel" parent="." instance=ExtResource( 2 )]
 
+process/pause_mode = 1
 transform/pos = Vector2( 192, 416 )
 
 [node name="Fackel1" parent="." instance=ExtResource( 2 )]
 
+process/pause_mode = 1
 transform/pos = Vector2( 704, 352 )
 
 [node name="Fackel2" parent="." instance=ExtResource( 2 )]
 
+process/pause_mode = 1
 transform/pos = Vector2( 416, 160 )
 
 [node name="GroundTiles" type="TileMap" parent="."]
@@ -114,6 +117,7 @@ tile_data = IntArray( 589830, 1, 589832, 5, 655366, 1, 720900, 1, 720902, 5, 786
 
 [node name="Water" parent="." instance=ExtResource( 6 )]
 
+process/pause_mode = 2
 transform/pos = Vector2( 80, 288 )
 
 [node name="CollisionShape2D" parent="Water"]
@@ -130,12 +134,28 @@ pointB = Vector2( 736, 464 )
 
 transform/pos = Vector2( 0, 0 )
 
+[node name="Area2D" parent="Enemy"]
+
+editor/display_folded = true
+
+[node name="Area2DFlip" parent="Enemy"]
+
+editor/display_folded = true
+
 [node name="AnimationPlayer" parent="Enemy"]
 
 anims/fly = SubResource( 1 )
 autoplay = "fly"
 
 [node name="Timer" parent="." instance=ExtResource( 8 )]
+
+[connection signal="time_freeze" from="Player" to="Fackel" method="_on_Player_time_freeze"]
+
+[connection signal="time_freeze" from="Player" to="Enemy" method="_on_Player_time_freeze"]
+
+[connection signal="time_freeze_end" from="Player" to="Fackel" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="Enemy" method="_on_Player_time_freeze_end"]
 
 [connection signal="body_enter" from="Water" to="Player" method="_on_Water_body_enter"]
 
@@ -150,5 +170,6 @@ autoplay = "fly"
 [connection signal="body_exit" from="Enemy/Area2DFlip" to="Player" method="_on_Area2DFlip_body_exit"]
 
 
+[editable path="Fackel2"]
 [editable path="Water"]
 [editable path="Enemy"]

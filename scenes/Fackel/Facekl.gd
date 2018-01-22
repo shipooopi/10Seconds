@@ -16,3 +16,18 @@ func _process(delta):
 #         self.set_frame(get_frame() + 1)
 #      
 #      tempElapsed = 0
+
+func _on_Player_time_freeze():
+	self.set_process(false)
+	pass # replace with function body
+
+
+func _on_Player_time_freeze_end():
+	self.set_process(true)
+	pass # replace with function body
+
+
+func _on_Fackel_frame_changed():
+	self.get_sprite_frames().set_animation_speed("default", floor(rand_range(3, 6)))
+	#
+	pass # replace with function body

@@ -37,6 +37,7 @@ func _ready():
 	sprite_node = get_node("Sprite")
 	area_node = get_node("Area2D")
 	areaFlip_node = get_node("Area2DFlip")
+	animation_player = get_node("AnimationPlayer")
 	directionToA.x = pointA.x - pointB.x
 	directionToA.y = pointA.y - pointB.y
 	for index in range(get_parent().get_children().size()):
@@ -96,3 +97,13 @@ func set_life(new_value):
 	life = new_value
 	if(life <= 0):
 		queue_free()
+
+func _on_Player_time_freeze():
+	set_hidden(true)
+	animation_player.set_active(false)
+	pass
+	
+func _on_Player_time_freeze_end():
+	set_hidden(false)
+	animation_player.set_active(true)
+	pass # replace with function body

@@ -44,13 +44,14 @@ var life setget set_life
 var playerInsideEnemy = false
 var inWater = false
 
-signal test
+signal time_freeze
+signal time_freeze_end
 
 func _ready():
 	set_process(true)
 	set_process_input(true)
 	sprite_node = get_node("Sprite")
-	animation_player = get_node("/root/World/AnimationPlayer")
+#	animation_player = get_node("/root/World/AnimationPlayer")
 	set_life(start_life[SaveFile._get_save_dictionary()["progress"]["life"]])
 	#animation_player.play("Idle")
 	
@@ -83,15 +84,19 @@ func _input(event):
 			
 	#TODO: use signals not get_tree.set_pause()!
 	if(event.is_action_pressed("time_freeze")):
-		set_pause_mode(2)
-		get_tree().set_pause(true)
+#		pass
+		emit_signal("time_freeze")
+#		set_pause_mode(2)
+#		get_tree().set_pause(true)
 	if(event.is_action_released("time_freeze")):
-		set_pause_mode(0)
-		get_tree().set_pause(false)
-#		
+#		pass
+#		set_pause_mode(0)
+#		get_tree().set_pause(false)
+		emit_signal("time_freeze_end")
+
+			
 	if (event.is_action_pressed("shoot")):
 		shoot()
- 
  
 func _process(delta):
 	# INPUT
@@ -218,9 +223,12 @@ func _on_Area2DFlip_body_exit( body ):
 
 func _on_Water_body_enter( body ):
 	if(body.get_name() == "Player"):
+		print("in Water!")
 		inWater = true
+		print("water true")
 		_got_hit()
 
 func _on_Water_body_exit( body ):
 	if(body.get_name() == "Player"):
 		inWater = false
+		print("water false")
