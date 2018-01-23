@@ -149,13 +149,17 @@ autoplay = "fly"
 
 [node name="Timer" parent="." instance=ExtResource( 8 )]
 
-[connection signal="time_freeze" from="Player" to="Fackel" method="_on_Player_time_freeze"]
+[connection signal="time_freeze" from="Player" to="Timer" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze" from="Player" to="Enemy" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze_end" from="Player" to="Fackel" method="_on_Player_time_freeze_end"]
+[connection signal="time_freeze" from="Player" to="Fackel" method="_on_Player_time_freeze"]
+
+[connection signal="time_freeze_end" from="Player" to="Timer" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="Enemy" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="Fackel" method="_on_Player_time_freeze_end"]
 
 [connection signal="body_enter" from="Water" to="Player" method="_on_Water_body_enter"]
 
@@ -173,3 +177,4 @@ autoplay = "fly"
 [editable path="Fackel2"]
 [editable path="Water"]
 [editable path="Enemy"]
+[editable path="Timer"]

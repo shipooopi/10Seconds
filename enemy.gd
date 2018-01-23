@@ -99,11 +99,11 @@ func set_life(new_value):
 		queue_free()
 
 func _on_Player_time_freeze():
-	set_hidden(true)
+	sprite_node.set_process(false)
 	animation_player.set_active(false)
 	pass
 	
 func _on_Player_time_freeze_end():
-	set_hidden(false)
+	sprite_node.set_process(true)
 	animation_player.set_active(true)
 	pass # replace with function body

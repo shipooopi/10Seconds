@@ -2,7 +2,6 @@ extends CanvasLayer
 
 var label_node
 var timer_node
-var count = 0
 
 func _ready():
 	label_node = get_node("Label")
@@ -15,3 +14,11 @@ func _ready():
 	
 func _process(delta):
 	label_node.set_text(str(stepify(timer_node.get_time_left(),0.01)))
+
+
+func _on_Player_time_freeze():
+	timer_node.set_process(false)
+
+
+func _on_Player_time_freeze_end():
+	timer_node.set_process(true)

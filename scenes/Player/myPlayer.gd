@@ -38,8 +38,12 @@ export var MAX_JUMP_COUNT = 2
 
 const scn_bullet = preload("res://scenes/Bullet/playerBullet.tscn")
 
-var start_life = [1,2,3]
+var start_life = [0,1,2,3]
 var life setget set_life
+
+var time_freeze_time_array = [0,20,40,60]
+var time_freeze_time
+var time_freeze_used = false
 
 var playerInsideEnemy = false
 var inWater = false
@@ -53,6 +57,8 @@ func _ready():
 	sprite_node = get_node("Sprite")
 #	animation_player = get_node("/root/World/AnimationPlayer")
 	set_life(start_life[SaveFile._get_save_dictionary()["progress"]["life"]])
+	time_freeze_time = time_freeze_time_array[SaveFile._get_save_dictionary()["progress"]["magic"]]
+	
 	#animation_player.play("Idle")
 	
 func create_bullet(pos):
@@ -81,18 +87,10 @@ func _input(event):
 			jump_count += 1
 		if (jump_count > 0 and event.is_action_released("jump") and speed.y < -RELEASED_JUMP_FORCE):
 			speed.y = -RELEASED_JUMP_FORCE
-			
-	#TODO: use signals not get_tree.set_pause()!
-	if(event.is_action_pressed("time_freeze")):
-#		pass
+
+	if(time_freeze_time > 0 and event.is_action_pressed("time_freeze")):
 		emit_signal("time_freeze")
-#		set_pause_mode(2)
-#		get_tree().set_pause(true)
-	if(event.is_action_released("time_freeze")):
-#		pass
-#		set_pause_mode(0)
-#		get_tree().set_pause(false)
-		emit_signal("time_freeze_end")
+		time_freeze_used = true
 
 			
 	if (event.is_action_pressed("shoot")):
@@ -172,8 +170,14 @@ func _process(delta):
 	else:
 		get_node("Sprite").show()
 		
-	if(playerInsideEnemy && invis_timer <= 0):
+	if((playerInsideEnemy || inWater) && invis_timer <= 0):
 		_got_hit()
+		
+	if(time_freeze_used):
+		if(time_freeze_time > 0):
+			time_freeze_time -= 1
+		elif(time_freeze_time <= 0):
+			emit_signal("time_freeze_end")
 		
 func set_life(new_value):
 	life = new_value
