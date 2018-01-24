@@ -45,7 +45,7 @@ func _ready():
 
 	normalPosition = get_pos()
 	pflock = scn_pflock.instance()
-	pflock.set_pos(Vector2(normalPosition.x, normalPosition.y + 8))
+	pflock.set_pos(Vector2(normalPosition.x, normalPosition.y))
 	set_process(true)
 
 

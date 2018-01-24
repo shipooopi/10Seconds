@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://scenes/Tileset/Background/BackgroundTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Fackel/Fackel.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/Water/Water.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Enemy/Enemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Timer/Timer.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/ChainChomp/ChainChomp.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Animation" id=1]
 
@@ -149,6 +150,10 @@ autoplay = "fly"
 
 [node name="Timer" parent="." instance=ExtResource( 8 )]
 
+[node name="ChainChomp" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 544, 496 )
+
 [connection signal="time_freeze" from="Player" to="Timer" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze" from="Player" to="Enemy" method="_on_Player_time_freeze"]
@@ -173,8 +178,13 @@ autoplay = "fly"
 
 [connection signal="body_exit" from="Enemy/Area2DFlip" to="Player" method="_on_Area2DFlip_body_exit"]
 
+[connection signal="body_enter" from="ChainChomp/Hitbox" to="Player" method="_on_Hitbox_body_enter"]
+
+[connection signal="body_exit" from="ChainChomp/Hitbox" to="Player" method="_on_Hitbox_body_exit"]
+
 
 [editable path="Fackel2"]
 [editable path="Water"]
 [editable path="Enemy"]
 [editable path="Timer"]
+[editable path="ChainChomp"]
