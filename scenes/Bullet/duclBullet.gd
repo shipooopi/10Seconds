@@ -6,8 +6,5 @@ func _ready():
 	#
 	
 func _on_body_enter(other):
-	if(other.get_name() == "Enemy"):
-		other.life -= 1
-	if(other.get_name() != "Player"):
-		queue_free()
-	pass
+	if(other.get_name() == "Player"):
+		other._got_hit()

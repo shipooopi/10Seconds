@@ -28,6 +28,8 @@ var chainItemSprite7
 var chainItemSprite8
 var sprite
 
+var state = "idle"
+
 const scn_pflock = preload("res://scenes/Pflock/Pflock.tscn")
 var pflock
 var pflockDrawn = false
@@ -68,6 +70,8 @@ func _process(delta):
 	
 
 	if(attackDirection.length() > 0 && readyToAttack && distanceFromNormal < attackRadius):
+		sprite.stop()
+		state = "attack"
 		movementRemainder = move(attackSpeed * delta * attackDirection)
 		if(playerObject.get_pos().x < normalPosition.x):
 			sprite.set_flip_h(true)
@@ -75,20 +79,29 @@ func _process(delta):
 			sprite.set_flip_h(false)
 		
 	if((distanceFromNormal >= attackRadius or movementRemainder.length() > 0) && attackTimer > 0):
+		if(state == "attack"):
+			sprite.play("bite")
+			state = "justAttacked"
 		attackTimer -= 1
 		readyToAttack = false
 	
 	if(attackTimer == 0):
+		if(state == "justAttacked" ):
+			sprite.stop()
+			state = "idle"
 		if(distanceFromNormal <= 3):
 			attackTimer = ATTACK_TIMER
 			attackDirection = Vector2()
 			readyToAttack = true
 			movementRemainder = Vector2()
+			if(state == "idle"):
+				sprite.play("idle")
 		else:
 			move(goBackSpeed * delta * (normalPosition - get_pos()).normalized())
 		
 	if(attackTimer == ATTACK_TIMER && distanceFromNormal <= 3 && playerInside):
 		attackDirection = (playerObject.get_pos() - normalPosition).normalized()
+
 
 func _on_Area2D_body_enter( body ):
 	if(body.get_name() == "Player"):

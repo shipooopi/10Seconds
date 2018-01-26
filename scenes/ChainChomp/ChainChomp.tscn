@@ -1,15 +1,40 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=18 format=1]
 
 [ext_resource path="res://scenes/ChainChomp/ChainChomp.gd" type="Script" id=1]
 [ext_resource path="res://scenes/ChainChomp/KettenTeil.png" type="Texture" id=2]
-[ext_resource path="res://scenes/ChainChomp/Chainchomp.png" type="Texture" id=3]
+[ext_resource path="res://scenes/ChainChomp/animation/idle/Chainchomp_Idle_1.png" type="Texture" id=3]
+[ext_resource path="res://scenes/ChainChomp/animation/idle/Chainchomp_Idle_2.png" type="Texture" id=4]
+[ext_resource path="res://scenes/ChainChomp/animation/idle/Chainchomp_Idle_3.png" type="Texture" id=5]
+[ext_resource path="res://scenes/ChainChomp/animation/idle/Chainchomp_Idle_4.png" type="Texture" id=6]
+[ext_resource path="res://scenes/ChainChomp/animation/attack/Chainchomp-Attack0000.png" type="Texture" id=7]
+[ext_resource path="res://scenes/ChainChomp/animation/attack/Chainchomp-Attack0001.png" type="Texture" id=8]
+[ext_resource path="res://scenes/ChainChomp/animation/attack/Chainchomp-Attack0002.png" type="Texture" id=9]
+[ext_resource path="res://scenes/ChainChomp/animation/attack/Chainchomp-Attack0003.png" type="Texture" id=10]
+[ext_resource path="res://scenes/ChainChomp/animation/attack/Chainchomp-Attack0004.png" type="Texture" id=11]
+[ext_resource path="res://scenes/ChainChomp/animation/attack/Chainchomp-Attack0005.png" type="Texture" id=12]
+[ext_resource path="res://scenes/ChainChomp/animation/attack/Chainchomp-Attack0006.png" type="Texture" id=13]
+[ext_resource path="res://scenes/ChainChomp/ChainChompIdle.gd" type="Script" id=14]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": false,
+"name": "bite",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
 
 custom_solver_bias = 0.0
 radius = 150.0
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
@@ -58,29 +83,13 @@ texture = ExtResource( 2 )
 
 texture = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="AnimatedSprite" parent="."]
 
-texture = ExtResource( 3 )
+frames = SubResource( 1 )
+animation = "idle"
+script/script = ExtResource( 14 )
 
 [node name="Area2D" type="Area2D" parent="."]
-
-editor/display_folded = true
-input/pickable = true
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-
-shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
-
-[node name="Hitbox" type="Area2D" parent="."]
 
 editor/display_folded = true
 input/pickable = true
@@ -92,9 +101,27 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 
 shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+editor/display_folded = true
+input/pickable = true
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+
+shape = SubResource( 3 )
 trigger = false
 _update_shape_index = 0
 

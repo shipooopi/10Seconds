@@ -236,3 +236,9 @@ func _on_Water_body_exit( body ):
 	if(body.get_name() == "Player"):
 		inWater = false
 		print("water false")
+
+
+func _on_DuclBullet_body_enter( body ):
+	if(body.get_name() == "Player"):
+		if(!got_hit):
+			_got_hit()
