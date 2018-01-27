@@ -46,3 +46,11 @@ func set_life(new_value):
 	if(life <= 0):
 		queue_free()
 		
+func _on_time_freeze():
+	set_process(false)
+	sprite_node.set_process(false)
+
+func _on_time_freeze_end():
+	set_process(true)
+	sprite_node.set_process(true)
+		

@@ -37,8 +37,13 @@ export var MAX_FALL_SPEED_WATER = 700
 export var MAX_JUMP_COUNT = 2
 
 const scn_bullet = preload("res://scenes/Bullet/BulletTest.tscn")
+const scn_youDead = preload("res://scenes/YouDead/YouDead.tscn")
+const scn_freeze = preload("res://scenes/Freeze/Freeze.tscn")
 
-var start_life = [0,1,2,3]
+var freeze_screen
+var freeze_screen_path
+
+var start_life = [1,2,3,4]
 var life setget set_life
 
 var time_freeze_time_array = [0,20,40,60]
@@ -108,6 +113,9 @@ func _input(event):
 	if(time_freeze_time > 0 and event.is_action_pressed("time_freeze")):
 		emit_signal("time_freeze")
 		time_freeze_used = true
+		freeze_screen = scn_freeze.instance()
+		utils.main_node.add_child(freeze_screen)
+		freeze_screen_path = freeze_screen.get_path()
 
 			
 	if (event.is_action_pressed("shoot") && damage > 0):
@@ -116,10 +124,6 @@ func _input(event):
  
 func _process(delta):
 	# INPUT
-	if Input.is_action_pressed("Restart"):
-		set_pause_mode(0)
-		get_tree().set_pause(false)
-		get_tree().reload_current_scene()
 
 	if input_direction:
 		direction = input_direction
@@ -206,6 +210,8 @@ func _process(delta):
 			time_freeze_time -= 1
 		elif(time_freeze_time <= 0):
 			emit_signal("time_freeze_end")
+			if(utils.main_node.has_node(freeze_screen_path)):
+				freeze_screen.queue_free()
 			
 	if(state == "idle"):
 		sprite_node.play("idle")
@@ -226,10 +232,10 @@ func _process(delta):
 func set_life(new_value):
 	life = new_value
 	if(life <= 0):
-		set_pause_mode(0)
-		get_tree().set_pause(false)
-		get_tree().reload_current_scene()
-		print("DIED!")
+		get_tree().set_pause(true)
+		var youDead = scn_youDead.instance()
+		utils.main_node.add_child(youDead)
+		utils.main_node.move_child(youDead,0)
 	pass
 
 func _got_hit():

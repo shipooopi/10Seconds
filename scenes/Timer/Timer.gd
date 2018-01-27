@@ -3,6 +3,9 @@ extends CanvasLayer
 var label_node
 var timer_node
 
+const scn_youDead = preload("res://scenes/YouDead/YouDead.tscn")
+const scn_youWin = preload("res://scenes/YouWin/YouWin.tscn")
+
 func _ready():
 	label_node = get_node("Label")
 	timer_node = get_node("Timer")
@@ -29,3 +32,17 @@ func _on_Player_time_freeze():
 
 func _on_Player_time_freeze_end():
 	timer_node.set_process(true)
+
+func _on_Area2D_body_enter( body ):
+	if(body.get_name() == "Player"):
+		timer_node.set_process(false)
+		get_tree().set_pause(true)
+		if(timer_node.get_time_left() > 0):
+			var youWin = scn_youWin.instance()
+			utils.main_node.add_child(youWin)
+			utils.main_node.move_child(youWin,0)
+		else:
+			var youDead = scn_youDead.instance()
+			utils.main_node.add_child(youDead)
+			utils.main_node.move_child(youDead,0)
+	pass # replace with function body

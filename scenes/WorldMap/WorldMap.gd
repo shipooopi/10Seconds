@@ -12,4 +12,4 @@ func _ready():
 
 func _on_Level1_pressed():
 	#get_tree().change_scene("res://World.tscn")
-	get_tree().change_scene("res://scenes/Levels/Level1/Level1.tscn")
+	get_tree().change_scene("res://scenes/Levels/Level1/LevelTest.tscn")

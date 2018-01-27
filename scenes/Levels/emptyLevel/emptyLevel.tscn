@@ -57,15 +57,13 @@ transform/pos = Vector2( 624, -48 )
 
 [node name="GroundTiles" parent="." instance=ExtResource( 4 )]
 
-tile_data = IntArray( 0, 9, 1, 13, 2, 13, 3, 13, 4, 13, 5, 13, 6, 13, 7, 13, 8, 13, 9, 13, 10, 13, 11, 13, 12, 13, 13, 13, 14, 13, 15, 13, 16, 13, 17, 13, 18, 13, 19, 13, 20, 13, 21, 13, 22, 13, 23, 13, 24, 13, 25, 13, 26, 13, 27, 13, 28, 13, 29, 9, 65536, 10, 65565, 8, 131072, 10, 131101, 8, 196608, 10, 196637, 8, 262144, 10, 262173, 8, 327680, 10, 327689, 1073741883, 327690, 1073741884, 327691, 1073741885, 327692, 1073741886, 327709, 8, 393216, 10, 393245, 8, 458752, 10, 458781, 8, 524288, 10, 524317, 8, 589824, 10, 589853, 8, 655360, 10, 655389, 8, 720896, 10, 720925, 8, 786432, 10, 786461, 8, 851968, 10, 851997, 8, 917504, 10, 917533, 8, 983040, 10, 983069, 8, 1048576, 9, 1048577, 1, 1048578, 1, 1048579, 1, 1048580, 1, 1048581, 1, 1048582, 1, 1048583, 1, 1048584, 1, 1048585, 1, 1048586, 1, 1048587, 1, 1048588, 1, 1048589, 1, 1048590, 1, 1048591, 1, 1048592, 1, 1048593, 1, 1048594, 1, 1048595, 1, 1048596, 1, 1048597, 1, 1048598, 1, 1048599, 1, 1048600, 1, 1048601, 1, 1048602, 1, 1048603, 1, 1048604, 1, 1048605, 9 )
+tile_data = IntArray( 0, 9, 1, 13, 2, 13, 3, 13, 4, 13, 5, 13, 6, 13, 7, 13, 8, 13, 9, 13, 10, 13, 11, 13, 12, 13, 13, 13, 14, 13, 15, 13, 16, 13, 17, 13, 18, 13, 19, 13, 20, 13, 21, 13, 22, 13, 23, 13, 24, 13, 25, 13, 26, 13, 27, 13, 28, 13, 29, 9, 65536, 10, 65565, 8, 131072, 10, 131101, 8, 196608, 10, 196637, 8, 262144, 10, 262173, 8, 327680, 10, 327689, 1073741883, 327690, 1073741884, 327691, 1073741885, 327692, 1073741886, 327709, 8, 393216, 10, 393245, 8, 458752, 10, 458781, 8, 524288, 10, 524289, 38, 524290, 39, 524291, 39, 524292, 39, 524293, 40, 524294, 18, 524295, 18, 524296, 18, 524297, 18, 524298, 18, 524299, 18, 524300, 18, 524301, 19, 524317, 8, 589824, 10, 589825, 44, 589826, 45, 589827, 45, 589828, 45, 589829, 46, 589853, 8, 655360, 10, 655361, 13, 655362, 13, 655363, 13, 655364, 13, 655365, 14, 655389, 8, 720896, 10, 720925, 8, 786432, 10, 786442, 5, 786443, 6, 786444, 6, 786445, 7, 786461, 8, 851968, 10, 851997, 8, 917504, 10, 917533, 8, 983040, 10, 983069, 8, 1048576, 9, 1048577, 1, 1048578, 1, 1048579, 1, 1048580, 1, 1048581, 1, 1048582, 1, 1048583, 1, 1048584, 1, 1048585, 1, 1048586, 1, 1048587, 1, 1048588, 1, 1048589, 1, 1048590, 1, 1048591, 1, 1048592, 1, 1048593, 1, 1048594, 1, 1048595, 1, 1048596, 1, 1048597, 1, 1048598, 1, 1048599, 1, 1048600, 1, 1048601, 1, 1048602, 1, 1048603, 1, 1048604, 1, 1048605, 9 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 48, 496 )
 
 [node name="GurkenTiles" parent="." instance=ExtResource( 6 )]
-
-tile_data = IntArray(  )
 
 [node name="DackelCannon3" parent="." instance=ExtResource( 7 )]
 
@@ -116,13 +114,9 @@ collision/mask = 4
 
 [node name="OneWayDown" parent="." instance=ExtResource( 11 )]
 
-tile_data = IntArray(  )
-
 [node name="OneWayLeft" parent="." instance=ExtResource( 12 )]
 
 [node name="OneWayUp" parent="." instance=ExtResource( 13 )]
-
-tile_data = IntArray(  )
 
 [node name="OneWayRight" parent="." instance=ExtResource( 14 )]
 
@@ -134,17 +128,17 @@ editor/display_folded = true
 transform/pos = Vector2( 32, -32 )
 transform/scale = Vector2( 1, 1 )
 
-[connection signal="time_freeze" from="Player" to="Timer" method="_on_Player_time_freeze"]
-
 [connection signal="time_freeze" from="Player" to="Enemy" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze" from="Player" to="Fackel" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze_end" from="Player" to="Timer" method="_on_Player_time_freeze_end"]
+[connection signal="time_freeze" from="Player" to="Timer" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze_end" from="Player" to="Enemy" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="Fackel" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="Timer" method="_on_Player_time_freeze_end"]
 
 [connection signal="body_enter" from="Enemy/Area2D" to="Player" method="_on_Area2D_body_enter"]
 
