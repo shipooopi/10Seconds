@@ -28,7 +28,7 @@ export var DECELERATION = 400
 export var DECELERATION_DISTANCE = 275
 export var SPEED_DIVISOR = 5
 
-export var life = 3 setget set_life
+export var life = 6 setget set_life
 
 signal hit_the_player
 

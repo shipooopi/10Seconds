@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://scenes/Tileset/GurkenTiles/GurkenTileset.tres" type="TileSet" id=1]
+
+[node name="GurkenTiles" type="TileMap"]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 8
+collision/mask = 8
+occluder/light_mask = 1
+tile_data = IntArray( 589830, 1, 589832, 5, 655366, 1, 720900, 1, 720902, 5, 786436, 1, 786440, 0, 851972, 1, 851976, 1, 917508, 5, 917510, 0, 917512, 1, 983046, 1, 983048, 1 )
+
+

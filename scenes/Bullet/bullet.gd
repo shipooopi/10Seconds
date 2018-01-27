@@ -2,6 +2,7 @@ extends Area2D
 
 export var velocity = Vector2()
 const scn_flare = preload("res://scenes/Flare/Flare.tscn")
+
 func _ready():
 	set_process(true)
 	#create_flare()

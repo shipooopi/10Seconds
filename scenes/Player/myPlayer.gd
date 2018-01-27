@@ -45,6 +45,9 @@ var time_freeze_time_array = [0,20,40,60]
 var time_freeze_time
 var time_freeze_used = false
 
+var damage
+var damage_Array = [0,2,3,6]
+
 var playerInsideEnemy = false
 var inWater = false
 
@@ -63,6 +66,7 @@ func _ready():
 #	animation_player = get_node("/root/World/AnimationPlayer")
 	set_life(start_life[SaveFile._get_save_dictionary()["progress"]["life"]])
 	time_freeze_time = time_freeze_time_array[SaveFile._get_save_dictionary()["progress"]["magic"]]
+	damage = damage_Array[SaveFile._get_save_dictionary()["progress"]["attack"]]
 	shoot_timer = SHOOT_TIMER_MAX
 	
 	#animation_player.play("Idle")
@@ -75,8 +79,8 @@ func create_bullet(pos):
 	else:
 		bullet.get_node("AnimatedSprite").set_flip_h(true)
 	bullet.velocity = bullet.velocity * direction
+	bullet.damage = damage
 	utils.main_node.add_child(bullet)
-	utils.main_node.move_child(bullet, 3)
 	
 func shoot():
 	var cannonPos
@@ -106,7 +110,7 @@ func _input(event):
 		time_freeze_used = true
 
 			
-	if (event.is_action_pressed("shoot")):
+	if (event.is_action_pressed("shoot") && damage > 0):
 		shoot()
 		state = "shoot"
  

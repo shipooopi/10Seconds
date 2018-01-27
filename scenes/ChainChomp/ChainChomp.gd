@@ -34,6 +34,8 @@ const scn_pflock = preload("res://scenes/Pflock/Pflock.tscn")
 var pflock
 var pflockDrawn = false
 
+export var life = 9 setget set_life
+
 func _ready():
 	chainItemSprite1 = get_node("chainItem1")
 	chainItemSprite2 = get_node("chainItem2")
@@ -112,3 +114,8 @@ func _on_Area2D_body_enter( body ):
 func _on_Area2D_body_exit( body ):
 	playerInside = false
 	pass # replace with function body
+	
+func set_life(new_value):
+	life = new_value
+	if(life <= 0):
+		queue_free()

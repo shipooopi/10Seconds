@@ -19,8 +19,11 @@ animations = [ {
 
 [node name="DuclBullet" instance=ExtResource( 1 )]
 
+collision/layers = 5
+collision/mask = 5
 script/script = ExtResource( 2 )
 velocity = Vector2( 300, 0 )
+life = 3
 
 [node name="Sprite" parent="."]
 
