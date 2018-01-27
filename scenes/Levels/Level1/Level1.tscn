@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://scenes/Tileset/Background/BackgroundTileset_new.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Fackel/Fackel.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/Enemy/Enemy.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Timer/Timer.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/ChainChomp/ChainChomp.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/Bullet/BulletTest.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=1]
 
@@ -121,7 +122,6 @@ direction = 1
 [node name="Water" parent="." instance=ExtResource( 7 )]
 
 process/pause_mode = 2
-editor/display_folded = true
 transform/pos = Vector2( 80, 288 )
 
 [node name="CollisionShape2D" parent="Water"]
@@ -130,8 +130,9 @@ transform/pos = Vector2( 32, 0 )
 
 [node name="Enemy" parent="." instance=ExtResource( 8 )]
 
-editor/display_folded = true
 transform/pos = Vector2( 736, 464 )
+collision/layers = 4
+collision/mask = 4
 pointA = Vector2( 480, 464 )
 pointB = Vector2( 736, 464 )
 
@@ -146,6 +147,8 @@ editor/display_folded = true
 [node name="Area2DFlip" parent="Enemy"]
 
 editor/display_folded = true
+collision/layers = 4
+collision/mask = 4
 
 [node name="AnimationPlayer" parent="Enemy"]
 
@@ -158,18 +161,26 @@ editor/display_folded = true
 
 [node name="ChainChomp" parent="." instance=ExtResource( 10 )]
 
-editor/display_folded = true
 transform/pos = Vector2( 544, 496 )
 
-[connection signal="time_freeze" from="Player" to="Timer" method="_on_Player_time_freeze"]
+[node name="Hitbox" parent="ChainChomp"]
+
+collision/layers = 4
+collision/mask = 4
+
+[node name="BulletTest" parent="." instance=ExtResource( 11 )]
+
+transform/pos = Vector2( 240, 96 )
 
 [connection signal="time_freeze" from="Player" to="Enemy" method="_on_Player_time_freeze"]
 
+[connection signal="time_freeze" from="Player" to="Timer" method="_on_Player_time_freeze"]
+
 [connection signal="time_freeze" from="Player" to="Fackel" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze_end" from="Player" to="Timer" method="_on_Player_time_freeze_end"]
-
 [connection signal="time_freeze_end" from="Player" to="Enemy" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="Timer" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="Fackel" method="_on_Player_time_freeze_end"]
 

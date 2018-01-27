@@ -19,7 +19,6 @@ animations = [ {
 
 [node name="DuclBullet" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 0.21463, 0 )
 script/script = ExtResource( 2 )
 velocity = Vector2( 300, 0 )
 
@@ -34,6 +33,6 @@ transform/pos = Vector2( 0, -1 )
 
 [node name="visNotifier" parent="."]
 
-rect = Rect2( -32, -16, 64, 32 )
+rect = Rect2( -32, -5, 64, 10 )
 
 

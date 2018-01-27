@@ -1,22 +1,41 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://scenes/Bullet/bullet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Bullet/playerBullet.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Bullet/animation_player/import/Shot_Idle0000.tex" type="Texture" id=3]
+[ext_resource path="res://scenes/Bullet/animation_player/import/Shot_Idle0001.tex" type="Texture" id=4]
+[ext_resource path="res://scenes/Bullet/animation_player/import/Shot_Idle0002.tex" type="Texture" id=5]
+[ext_resource path="res://scenes/Bullet/animation_player/import/Shot_Idle0003.tex" type="Texture" id=6]
+[ext_resource path="res://globals/animatedSprite.gd" type="Script" id=7]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="SpriteFrames" id=3]
+
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 4, 4 )
+extents = Vector2( 5, 5 )
 
 [node name="playerBullet" instance=ExtResource( 1 )]
 
-collision/layers = 15
+collision/layers = 5
 script/script = ExtResource( 2 )
-velocity = Vector2( 1000, 0 )
+velocity = Vector2( 100, 0 )
+
+[node name="Sprite" parent="."]
+
+frames = SubResource( 3 )
+script/script = ExtResource( 7 )
 
 [node name="CollisionShape2D" parent="."]
 
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="visNotifier" parent="."]
 

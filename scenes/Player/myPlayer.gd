@@ -36,7 +36,7 @@ export var MAX_FALL_SPEED_WATER = 700
 # TODO: set to var to change on runtime
 export var MAX_JUMP_COUNT = 2
 
-const scn_bullet = preload("res://scenes/Bullet/playerBullet.tscn")
+const scn_bullet = preload("res://scenes/Bullet/BulletTest.tscn")
 
 var start_life = [0,1,2,3]
 var life setget set_life
@@ -70,8 +70,13 @@ func _ready():
 func create_bullet(pos):
 	var bullet = scn_bullet.instance()
 	bullet.set_pos(pos)
+	if(direction > 0):
+		bullet.get_node("AnimatedSprite").set_flip_h(false)
+	else:
+		bullet.get_node("AnimatedSprite").set_flip_h(true)
 	bullet.velocity = bullet.velocity * direction
 	utils.main_node.add_child(bullet)
+	utils.main_node.move_child(bullet, 3)
 	
 func shoot():
 	var cannonPos

@@ -26,9 +26,9 @@
 [ext_resource path="res://scenes/Player/animation/running/Character_running0006.png" type="Texture" id=24]
 [ext_resource path="res://scenes/Player/animation/running/Character_running0007.png" type="Texture" id=25]
 [ext_resource path="res://scenes/Player/animation/running/Character_running0008.png" type="Texture" id=26]
-[ext_resource path="res://scenes/Player/animation/rise/Character_Still.png" type="Texture" id=27]
-[ext_resource path="res://scenes/Player/animation/shoot/Character_Shoot0000.png" type="Texture" id=28]
-[ext_resource path="res://scenes/Player/animation/shoot/Character_Shoot0001.png" type="Texture" id=29]
+[ext_resource path="res://scenes/Player/animation/shoot/Character_Shoot0000.png" type="Texture" id=27]
+[ext_resource path="res://scenes/Player/animation/shoot/Character_Shoot0001.png" type="Texture" id=28]
+[ext_resource path="res://scenes/Player/animation/rise/Character_Still.png" type="Texture" id=29]
 [ext_resource path="res://globals/animatedSprite.gd" type="Script" id=30]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -59,15 +59,15 @@ animations = [ {
 "name": "running",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 27 ) ],
-"loop": true,
-"name": "rise",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 28 ), ExtResource( 29 ) ],
+"frames": [ ExtResource( 27 ), ExtResource( 28 ) ],
 "loop": false,
 "name": "shoot",
 "speed": 20.0
+}, {
+"frames": [ ExtResource( 29 ) ],
+"loop": true,
+"name": "rise",
+"speed": 5.0
 } ]
 
 [node name="Player" type="KinematicBody2D"]
