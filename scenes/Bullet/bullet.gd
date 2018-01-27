@@ -4,7 +4,7 @@ export var velocity = Vector2()
 const scn_flare = preload("res://scenes/Flare/Flare.tscn")
 func _ready():
 	set_process(true)
-	create_flare()
+	#create_flare()
 	
 	yield(get_node("visNotifier"), "exit_screen")
 	queue_free()

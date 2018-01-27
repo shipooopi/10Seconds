@@ -94,10 +94,6 @@ tile_data = IntArray( 0, 9, 1, 13, 2, 13, 3, 13, 4, 13, 5, 13, 6, 13, 7, 13, 8, 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 48, 496 )
-JUMP_FORCE_WATER = 400
-RELEASED_JUMP_FORCE_WATER = 150
-GRAVITY_WATER = 1250
-MAX_FALL_SPEED_WATER = 700
 
 [node name="GurkenTiles" type="TileMap" parent="."]
 
@@ -125,6 +121,7 @@ direction = 1
 [node name="Water" parent="." instance=ExtResource( 7 )]
 
 process/pause_mode = 2
+editor/display_folded = true
 transform/pos = Vector2( 80, 288 )
 
 [node name="CollisionShape2D" parent="Water"]
@@ -194,6 +191,7 @@ transform/pos = Vector2( 544, 496 )
 
 
 [editable path="Fackel2"]
+[editable path="DackelCannon"]
 [editable path="Water"]
 [editable path="Enemy"]
 [editable path="Timer"]

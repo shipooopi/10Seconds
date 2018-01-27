@@ -48,8 +48,13 @@ var time_freeze_used = false
 var playerInsideEnemy = false
 var inWater = false
 
+var state = "idle"
+
 signal time_freeze
 signal time_freeze_end
+
+var shoot_timer
+const SHOOT_TIMER_MAX = 3
 
 func _ready():
 	set_process(true)
@@ -58,6 +63,7 @@ func _ready():
 #	animation_player = get_node("/root/World/AnimationPlayer")
 	set_life(start_life[SaveFile._get_save_dictionary()["progress"]["life"]])
 	time_freeze_time = time_freeze_time_array[SaveFile._get_save_dictionary()["progress"]["magic"]]
+	shoot_timer = SHOOT_TIMER_MAX
 	
 	#animation_player.play("Idle")
 	
@@ -78,11 +84,13 @@ func shoot():
 func _input(event):
 	if (inWater):
 		if (event.is_action_pressed("jump")):
+			state = "jump"
 			speed.y = -JUMP_FORCE_WATER
 		if (event.is_action_released("jump") and speed.y < -RELEASED_JUMP_FORCE_WATER):
 			speed.y = -RELEASED_JUMP_FORCE_WATER
 	else:		
 		if (jump_count < MAX_JUMP_COUNT and event.is_action_pressed("jump")):
+			state = "jump"
 			speed.y = -JUMP_FORCE
 			jump_count += 1
 		if (jump_count > 0 and event.is_action_released("jump") and speed.y < -RELEASED_JUMP_FORCE):
@@ -95,6 +103,7 @@ func _input(event):
 			
 	if (event.is_action_pressed("shoot")):
 		shoot()
+		state = "shoot"
  
 func _process(delta):
 	# INPUT
@@ -109,11 +118,17 @@ func _process(delta):
 	if Input.is_action_pressed("move_left"):
 		input_direction = -1
 		sprite_node.set_flip_h(true)
+		if(state != "jump" && state != "shoot"):
+			state = "running"
 	elif Input.is_action_pressed("move_right"):
 		input_direction = 1
 		sprite_node.set_flip_h(false)
+		if(state != "jump" && state != "shoot"):
+			state = "running"
 	else:
 		input_direction = 0
+		if(state != "jump" && state != "shoot"):
+			state = "idle"
 	
 
 	# MOVEMENT
@@ -136,10 +151,14 @@ func _process(delta):
 		if (speed.y > MAX_FALL_SPEED):
 			speed.y = MAX_FALL_SPEED
 		
+		
 	velocity.x = speed.x * delta * direction
 	velocity.y = speed.y * delta
 	
 	var movement_remainder = move(velocity)
+	
+	if(speed.y > 0 && floor(movement_remainder.y) != floor(velocity.y)):
+		state = "fall"
 	
 	if(((is_colliding() && get_collider().get_collision_mask() in [4, 8]) or got_hit) && invis_timer <= 0):
 		set_life(life - 1)
@@ -178,6 +197,22 @@ func _process(delta):
 			time_freeze_time -= 1
 		elif(time_freeze_time <= 0):
 			emit_signal("time_freeze_end")
+			
+	if(state == "idle"):
+		sprite_node.play("idle")
+	elif(state == "running"):
+		sprite_node.play("running")
+	elif(state == "jump"):
+		sprite_node.play("jump")
+	elif(state == "fall"):
+		sprite_node.play("fall")
+	elif(state == "shoot"):
+		sprite_node.play("shoot")
+		if(sprite_node.get_frame() == 1):
+			shoot_timer -= 1
+		if(shoot_timer <= 0):
+			state  = "notShoot"
+			shoot_timer = SHOOT_TIMER_MAX
 		
 func set_life(new_value):
 	life = new_value

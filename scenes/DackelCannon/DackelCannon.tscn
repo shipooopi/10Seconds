@@ -1,19 +1,32 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://scenes/DackelCannon/DackelCannon.gd" type="Script" id=1]
-[ext_resource path="res://Pink.png" type="Texture" id=2]
+[ext_resource path="res://scenes/DackelCannon/animation/import/Canon0000.tex" type="Texture" id=2]
+[ext_resource path="res://scenes/DackelCannon/animation/import/Canon0001.tex" type="Texture" id=3]
+[ext_resource path="res://scenes/DackelCannon/animation/import/Canon0002.tex" type="Texture" id=4]
+[ext_resource path="res://scenes/DackelCannon/animation/import/Canon0003.tex" type="Texture" id=5]
+[ext_resource path="res://scenes/DackelCannon/animation/import/Canon0004.tex" type="Texture" id=6]
+[ext_resource path="res://globals/animatedSprite.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 16, 16 )
+extents = Vector2( 12, 12 )
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": false,
+"name": "shoot",
+"speed": 15.0
+} ]
 
 [node name="DackelCannon" type="StaticBody2D"]
 
-transform/pos = Vector2( 82.6753, 75.6506 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 4 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -26,13 +39,16 @@ direction = -1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
+transform/pos = Vector2( 0, 4 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="AnimatedSprite" parent="."]
 
-texture = ExtResource( 2 )
+frames = SubResource( 2 )
+animation = "shoot"
+script/script = ExtResource( 7 )
 
 [node name="PositionLeft" type="Position2D" parent="."]
 
