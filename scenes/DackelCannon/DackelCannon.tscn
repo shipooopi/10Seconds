@@ -11,7 +11,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 12, 12 )
+extents = Vector2( 14, 12 )
 
 [sub_resource type="SpriteFrames" id=2]
 

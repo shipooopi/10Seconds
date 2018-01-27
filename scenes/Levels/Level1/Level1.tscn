@@ -1,19 +1,25 @@
-[gd_scene load_steps=16 format=1]
+[gd_scene load_steps=18 format=1]
 
 [ext_resource path="res://scenes/Tileset/Background/BackgroundTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Fackel/Fackel.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Tileset/GroundTiles/GroundTileMap.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Player/myPlayer.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/Tileset/GurkenTiles/GurkenTileMap.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/DackelCannon/DackelCannon.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/Water/Water.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/Enemy/Enemy.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/Timer/Timer.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/ChainChomp/ChainChomp.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/Tileset/OneWays/OneWayDownTileMap.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/Tileset/OneWays/OneWayLeftTileMap.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/Tileset/OneWays/OneWayUpTileMap.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/Tileset/OneWays/OneWayRightTileMap.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/Organisation/BackgroundSeperator.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Tileset/GroundTiles/GroundTileMap.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Player/myPlayer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Tileset/GurkenTiles/GurkenTileMap.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/DackelCannon/DackelCannon.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Water/Water.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Enemy/Enemy.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Timer/Timer.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/ChainChomp/ChainChomp.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/Tileset/OneWays/OneWayDownTileMap.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/Tileset/OneWays/OneWayLeftTileMap.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/Tileset/OneWays/OneWayUpTileMap.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/Tileset/OneWays/OneWayRightTileMap.tscn" type="PackedScene" id=15]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 48, 32 )
 
 [sub_resource type="Animation" id=1]
 
@@ -61,31 +67,53 @@ transform/pos = Vector2( 704, 352 )
 process/pause_mode = 1
 transform/pos = Vector2( 416, 160 )
 
-[node name="GroundTiles" parent="." instance=ExtResource( 3 )]
+[node name="BackgroundSeperator" parent="." instance=ExtResource( 3 )]
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
+[node name="GroundTiles" parent="." instance=ExtResource( 4 )]
+
+tile_data = IntArray( 0, 9, 1, 13, 2, 13, 3, 13, 4, 13, 5, 13, 6, 13, 7, 13, 8, 13, 9, 13, 10, 13, 11, 13, 12, 13, 13, 13, 14, 13, 15, 13, 16, 13, 17, 13, 18, 13, 19, 13, 20, 13, 21, 13, 22, 13, 23, 13, 24, 13, 25, 13, 26, 13, 27, 13, 28, 13, 29, 9, 65536, 10, 65565, 8, 131072, 10, 131082, 4, 131101, 8, 196608, 10, 196637, 8, 262144, 10, 262173, 8, 327680, 10, 327689, 1073741883, 327690, 1073741884, 327691, 1073741885, 327692, 1073741886, 327709, 8, 393216, 10, 393245, 8, 458752, 10, 458781, 8, 524288, 9, 524289, 38, 524290, 39, 524291, 39, 524292, 39, 524293, 40, 524294, 18, 524295, 18, 524296, 18, 524297, 18, 524298, 18, 524299, 18, 524300, 18, 524301, 19, 524317, 8, 589824, 9, 589825, 44, 589826, 45, 589827, 45, 589828, 45, 589829, 46, 589853, 8, 655360, 9, 655361, 13, 655362, 13, 655363, 13, 655364, 13, 655365, 14, 655389, 8, 720896, 10, 720925, 8, 786432, 10, 786442, 5, 786443, 6, 786444, 6, 786445, 7, 786461, 8, 851968, 10, 851997, 8, 917504, 10, 917533, 8, 983040, 10, 983069, 8, 1048576, 9, 1048577, 1, 1048578, 1, 1048579, 1, 1048580, 1, 1048581, 1, 1048582, 1, 1048583, 1, 1048584, 1, 1048585, 1, 1048586, 1, 1048587, 1, 1048588, 1, 1048589, 1, 1048590, 1, 1048591, 1, 1048592, 1, 1048593, 1, 1048594, 1, 1048595, 1, 1048596, 1, 1048597, 1, 1048598, 1, 1048599, 1, 1048600, 1, 1048601, 1, 1048602, 1, 1048603, 1, 1048604, 1, 1048605, 9 )
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 48, 496 )
 
-[node name="GurkenTiles" parent="." instance=ExtResource( 5 )]
+[node name="GurkenTiles" parent="." instance=ExtResource( 6 )]
 
-[node name="DackelCannon" parent="." instance=ExtResource( 6 )]
+[node name="DackelCannon" parent="." instance=ExtResource( 7 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 272, 240 )
 direction = 1
 
-[node name="Water" parent="." instance=ExtResource( 7 )]
+[node name="DackelCannon3" parent="." instance=ExtResource( 7 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 400, 368 )
+direction = 1
+
+[node name="DackelCannon2" parent="." instance=ExtResource( 7 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 336, 48 )
+
+[node name="DackelCannon1" parent="." instance=ExtResource( 7 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 784, 496 )
+
+[node name="Water" parent="." instance=ExtResource( 8 )]
 
 process/pause_mode = 2
-editor/display_folded = true
 transform/pos = Vector2( 80, 288 )
 
-[node name="CollisionShape2D" parent="Water"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Water"]
 
 transform/pos = Vector2( 32, 0 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
 
-[node name="Enemy" parent="." instance=ExtResource( 8 )]
+[node name="Enemy" parent="." instance=ExtResource( 9 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 736, 464 )
@@ -113,11 +141,11 @@ collision/mask = 4
 anims/fly = SubResource( 1 )
 autoplay = "fly"
 
-[node name="Timer" parent="." instance=ExtResource( 9 )]
+[node name="Timer" parent="." instance=ExtResource( 10 )]
 
 editor/display_folded = true
 
-[node name="ChainChomp" parent="." instance=ExtResource( 10 )]
+[node name="ChainChomp" parent="." instance=ExtResource( 11 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 544, 496 )
@@ -127,29 +155,29 @@ transform/pos = Vector2( 544, 496 )
 collision/layers = 4
 collision/mask = 4
 
-[node name="OneWayDown" parent="." instance=ExtResource( 11 )]
+[node name="OneWayDown" parent="." instance=ExtResource( 12 )]
 
-[node name="OneWayLeft" parent="." instance=ExtResource( 12 )]
+[node name="OneWayLeft" parent="." instance=ExtResource( 13 )]
 
 tile_data = IntArray( 327692, 0, 393228, 2, 458768, 3 )
 
-[node name="OneWayUp" parent="." instance=ExtResource( 13 )]
+[node name="OneWayUp" parent="." instance=ExtResource( 14 )]
 
-[node name="OneWayRight" parent="." instance=ExtResource( 14 )]
+[node name="OneWayRight" parent="." instance=ExtResource( 15 )]
 
-tile_data = IntArray( 327686, 0, 393222, 1, 458758, 2, 458764, 3 )
-
-[connection signal="time_freeze" from="Player" to="Timer" method="_on_Player_time_freeze"]
+tile_data = IntArray( 65538, 3, 327686, 0, 393222, 1, 458758, 2, 458764, 3 )
 
 [connection signal="time_freeze" from="Player" to="Enemy" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze" from="Player" to="Fackel" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze_end" from="Player" to="Timer" method="_on_Player_time_freeze_end"]
+[connection signal="time_freeze" from="Player" to="Timer" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze_end" from="Player" to="Enemy" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="Fackel" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="Timer" method="_on_Player_time_freeze_end"]
 
 [connection signal="body_enter" from="Water" to="Player" method="_on_Water_body_enter"]
 

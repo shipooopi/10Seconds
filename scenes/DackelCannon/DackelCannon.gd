@@ -35,7 +35,7 @@ func create_bullet(pos):
 		bullet.get_node("Sprite").set_flip_h(false)
 	bullet.velocity = bullet.velocity * direction
 	utils.main_node.add_child(bullet)
-	utils.main_node.move_child(bullet, 2)
+	utils.main_node.move_child(bullet, utils.main_node.get_node("BackgroundSeperator").get_index() + 1)
 	
 	
 func _shoot():
