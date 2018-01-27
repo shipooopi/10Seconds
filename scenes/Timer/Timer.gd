@@ -13,7 +13,14 @@ func _ready():
 	pass
 	
 func _process(delta):
-	label_node.set_text(str(stepify(timer_node.get_time_left(),0.01)))
+	if(timer_node.get_time_left() > 0):
+		label_node.set_text(str(stepify(timer_node.get_time_left(),0.01)))
+	else:
+		label_node.set_text("0.00")
+		
+	if(timer_node.get_time_left() <= 3):
+		label_node.add_color_override("font_color", Color(1,0,0))
+	
 
 
 func _on_Player_time_freeze():

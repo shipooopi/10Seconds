@@ -271,18 +271,21 @@ func _on_Area2DFlip_body_exit( body ):
 
 func _on_Water_body_enter( body ):
 	if(body.get_name() == "Player"):
-		print("in Water!")
-		inWater = true
-		print("water true")
-		_got_hit()
+		_in_water()
 
 func _on_Water_body_exit( body ):
 	if(body.get_name() == "Player"):
-		inWater = false
-		print("water false")
+		_out_water()
 
 
 func _on_DuclBullet_body_enter( body ):
 	if(body.get_name() == "Player"):
 		if(!got_hit):
 			_got_hit()
+
+func _in_water():
+	inWater = true
+	_got_hit()
+	
+func _out_water():
+	inWater = false
