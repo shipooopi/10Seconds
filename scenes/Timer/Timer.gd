@@ -39,7 +39,7 @@ func _on_Area2D_body_enter( body ):
 	if(body.get_name() == "Player"):
 		timer_node.set_process(false)
 		get_tree().set_pause(true)
-		if(timer_node.get_time_left() > 0 and not winShow):
+		if(timer_node.get_time_left() > 0 and not winShow and not Globals.get("gameOver")):
 			winShow = true
 			var youWin = scn_youWin.instance()
 			utils.main_node.add_child(youWin)

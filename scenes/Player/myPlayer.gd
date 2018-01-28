@@ -47,7 +47,7 @@ var freeze_screen_path
 var start_life = [1,2,3,4]
 var life setget set_life
 
-var time_freeze_time_array = [0,20,40,60]
+var time_freeze_time_array = [0,30,60,90]
 var time_freeze_time
 var time_freeze_used = false
 
@@ -67,6 +67,7 @@ const SHOOT_TIMER_MAX = 3
 
 
 func _ready():
+	Globals.set("gameOver", false)
 	set_process(true)
 	set_process_input(true)
 	sprite_node = get_node("Sprite")
@@ -110,7 +111,7 @@ func _input(event):
 		if (jump_count > 0 and event.is_action_released("jump") and speed.y < -RELEASED_JUMP_FORCE):
 			speed.y = -RELEASED_JUMP_FORCE
 
-	if(time_freeze_time > 0 and event.is_action_pressed("time_freeze")):
+	if(time_freeze_time > 0 and event.is_action_pressed("time_freeze") and not time_freeze_used):
 		emit_signal("time_freeze")
 		time_freeze_used = true
 		freeze_screen = scn_freeze.instance()
@@ -236,6 +237,7 @@ func set_life(new_value):
 		get_tree().set_pause(true)
 		var youDead = scn_youDead.instance()
 		utils.main_node.add_child(youDead)
+		Globals.set("gameOver", true)
 	pass
 
 func _got_hit():

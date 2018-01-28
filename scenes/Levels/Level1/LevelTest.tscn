@@ -200,23 +200,23 @@ tile_data = IntArray( 327686, 0, 393222, 1, 393243, 0, 458758, 2, 458764, 3, 458
 
 [connection signal="time_freeze" from="Player" to="Timer" method="_on_Player_time_freeze"]
 
+[connection signal="time_freeze" from="Player" to="ChainChomp" method="_on_Player_time_freeze"]
+
+[connection signal="time_freeze" from="Player" to="Enemy" method="_on_Player_time_freeze"]
+
 [connection signal="time_freeze" from="Player" to="Fackel" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze" from="Player" to="DackelCannon" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze" from="Player" to="Enemy" method="_on_Player_time_freeze"]
-
-[connection signal="time_freeze" from="Player" to="ChainChomp" method="_on_Player_time_freeze"]
-
 [connection signal="time_freeze_end" from="Player" to="Timer" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="ChainChomp" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="Enemy" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="Fackel" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="DackelCannon" method="_on_Player_time_freeze_end"]
-
-[connection signal="time_freeze_end" from="Player" to="Enemy" method="_on_Player_time_freeze_end"]
-
-[connection signal="time_freeze_end" from="Player" to="ChainChomp" method="_on_Player_time_freeze_end"]
 
 [connection signal="body_enter" from="Water" to="Player" method="_on_Water_body_enter"]
 

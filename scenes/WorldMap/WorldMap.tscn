@@ -54,10 +54,28 @@ shortcut = null
 text = "Level 1 Attack"
 flat = false
 
+[node name="Level1Magic" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 424.0
+margin/top = 390.0
+margin/right = 526.0
+margin/bottom = 439.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Level 1 Magic"
+flat = false
+
 [connection signal="pressed" from="Level1" to="." method="_on_Level1_pressed"]
 
 [connection signal="pressed" from="Level1Life" to="." method="_on_Level1Life_pressed"]
 
 [connection signal="pressed" from="Level1Attack" to="." method="_on_Level1Attack_pressed"]
+
+[connection signal="pressed" from="Level1Magic" to="." method="_on_Level1Magic_pressed"]
 
 
