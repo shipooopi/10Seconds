@@ -12,10 +12,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 247.0
-margin/top = 325.0
-margin/right = 331.0
-margin/bottom = 374.0
+margin/left = 5.0
+margin/top = 489.0
+margin/right = 89.0
+margin/bottom = 538.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -36,6 +36,22 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 text = "Level 1 Life"
+flat = false
+
+[node name="LevelBoss" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 422.0
+margin/top = 261.0
+margin/right = 507.0
+margin/bottom = 310.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Level Boss"
 flat = false
 
 [node name="Level1Attack" type="Button" parent="."]
@@ -73,6 +89,8 @@ flat = false
 [connection signal="pressed" from="Level1" to="." method="_on_Level1_pressed"]
 
 [connection signal="pressed" from="Level1Life" to="." method="_on_Level1Life_pressed"]
+
+[connection signal="pressed" from="LevelBoss" to="." method="_on_LevelBoss_pressed"]
 
 [connection signal="pressed" from="Level1Attack" to="." method="_on_Level1Attack_pressed"]
 

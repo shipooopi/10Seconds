@@ -28,3 +28,11 @@ func _on_Level1Attack_pressed():
 func _on_Level1Magic_pressed():
 	get_tree().change_scene("res://scenes/Levels/Level1Magic/Level1Magic.tscn")
 	pass # replace with function body
+
+
+func _on_Level2Life_pressed():
+	get_tree().change_scene("res://scenes/Levels/Level2Life/Level2Life.tscn")
+
+
+func _on_LevelBoss_pressed():
+	get_tree().change_scene("res://scenes/Levels/LevelBoss/LevelBoss.tscn")

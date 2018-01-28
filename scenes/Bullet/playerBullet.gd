@@ -13,13 +13,13 @@ func _process(delta):
 	
 
 func _on_bullet_area_enter( area ):
-	print(str(area.get_collision_mask()))
-	if(area.get_collision_mask_bit(2) == true):
-		if(area.get("life") != null):
-			area.life -= damage
-		elif(area.get_parent().get("life") != null):
-			area.get_parent().life -= damage
-		queue_free()
+	if(not area.get_collision_mask_bit(12)):
+		if(area.get_collision_mask_bit(2)):
+			if(area.get("life") != null):
+				area.life -= damage
+			elif(area.get_parent().get("life") != null):
+				area.get_parent().life -= damage
+			queue_free()
 
 
 func _on_bullet_body_enter( body ):
