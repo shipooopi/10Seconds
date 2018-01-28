@@ -13,22 +13,22 @@
 [ext_resource path="res://scenes/Player/animation/idle/Character_Idle0009.png" type="Texture" id=11]
 [ext_resource path="res://scenes/Player/animation/idle/Character_Idle0010.png" type="Texture" id=12]
 [ext_resource path="res://scenes/Player/animation/idle/Character_Idle0011.png" type="Texture" id=13]
-[ext_resource path="res://scenes/Player/animation/fall/Character_Fall.png" type="Texture" id=14]
-[ext_resource path="res://scenes/Player/animation/shoot/Character_Shoot0000.png" type="Texture" id=15]
-[ext_resource path="res://scenes/Player/animation/shoot/Character_Shoot0001.png" type="Texture" id=16]
-[ext_resource path="res://scenes/Player/animation/running/Character_running0000.png" type="Texture" id=17]
-[ext_resource path="res://scenes/Player/animation/running/Character_running0001.png" type="Texture" id=18]
-[ext_resource path="res://scenes/Player/animation/running/Character_running0002.png" type="Texture" id=19]
-[ext_resource path="res://scenes/Player/animation/running/Character_running0003.png" type="Texture" id=20]
-[ext_resource path="res://scenes/Player/animation/running/Character_running0004.png" type="Texture" id=21]
-[ext_resource path="res://scenes/Player/animation/running/Character_running0005.png" type="Texture" id=22]
-[ext_resource path="res://scenes/Player/animation/running/Character_running0006.png" type="Texture" id=23]
-[ext_resource path="res://scenes/Player/animation/running/Character_running0007.png" type="Texture" id=24]
-[ext_resource path="res://scenes/Player/animation/running/Character_running0008.png" type="Texture" id=25]
-[ext_resource path="res://scenes/Player/animation/rise/Character_Still.png" type="Texture" id=26]
-[ext_resource path="res://scenes/Player/animation/jump/Character_Jump0000.png" type="Texture" id=27]
-[ext_resource path="res://scenes/Player/animation/jump/Character_Jump0001.png" type="Texture" id=28]
-[ext_resource path="res://scenes/Player/animation/jump/Character_Jump0002.png" type="Texture" id=29]
+[ext_resource path="res://scenes/Player/animation/shoot/Character_Shoot0000.png" type="Texture" id=14]
+[ext_resource path="res://scenes/Player/animation/shoot/Character_Shoot0001.png" type="Texture" id=15]
+[ext_resource path="res://scenes/Player/animation/jump/Character_Jump0000.png" type="Texture" id=16]
+[ext_resource path="res://scenes/Player/animation/jump/Character_Jump0001.png" type="Texture" id=17]
+[ext_resource path="res://scenes/Player/animation/jump/Character_Jump0002.png" type="Texture" id=18]
+[ext_resource path="res://scenes/Player/animation/running/Character_running0000.png" type="Texture" id=19]
+[ext_resource path="res://scenes/Player/animation/running/Character_running0001.png" type="Texture" id=20]
+[ext_resource path="res://scenes/Player/animation/running/Character_running0002.png" type="Texture" id=21]
+[ext_resource path="res://scenes/Player/animation/running/Character_running0003.png" type="Texture" id=22]
+[ext_resource path="res://scenes/Player/animation/running/Character_running0004.png" type="Texture" id=23]
+[ext_resource path="res://scenes/Player/animation/running/Character_running0005.png" type="Texture" id=24]
+[ext_resource path="res://scenes/Player/animation/running/Character_running0006.png" type="Texture" id=25]
+[ext_resource path="res://scenes/Player/animation/running/Character_running0007.png" type="Texture" id=26]
+[ext_resource path="res://scenes/Player/animation/running/Character_running0008.png" type="Texture" id=27]
+[ext_resource path="res://scenes/Player/animation/rise/Character_Still.png" type="Texture" id=28]
+[ext_resource path="res://scenes/Player/animation/fall/Character_Fall.png" type="Texture" id=29]
 [ext_resource path="res://globals/animatedSprite.gd" type="Script" id=30]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -44,29 +44,29 @@ animations = [ {
 "name": "idle",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 14 ) ],
-"loop": true,
-"name": "fall",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
 "loop": false,
 "name": "shoot",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ],
 "loop": true,
 "name": "running",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 26 ) ],
+"frames": [ ExtResource( 28 ) ],
 "loop": true,
 "name": "rise",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ) ],
-"loop": false,
-"name": "jump",
+"frames": [ ExtResource( 29 ) ],
+"loop": true,
+"name": "fall",
 "speed": 5.0
 } ]
 
@@ -82,7 +82,7 @@ collision/mask = 15
 collision/margin = 0.08
 script/script = ExtResource( 1 )
 MAX_BLINK_COUNTER = 5
-MAX_INVIS_TIMER = 100
+MAX_INVIS_TIMER = 45
 MAX_SPEED = 300
 ACCELERATION = 1500
 DECELERATION = 4000

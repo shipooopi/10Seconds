@@ -15,8 +15,8 @@ var jump_count = 0
 var got_hit = false
 var invis_timer = 0
 var blink_counter = 0
-export var MAX_BLINK_COUNTER = 5
-export var MAX_INVIS_TIMER = 100
+export var MAX_BLINK_COUNTER = 3
+export var MAX_INVIS_TIMER = 20
 
 # Constants
 export var MAX_SPEED = 900
@@ -194,7 +194,7 @@ func _process(delta):
 		jump_count += 1
 	
 	if(invis_timer > 0):
-		if(invis_timer % 20 == 0):
+		if(invis_timer % 15 == 0):
 			blink_counter = MAX_BLINK_COUNTER
 			get_node("Sprite").hide()
 		invis_timer -= 1
