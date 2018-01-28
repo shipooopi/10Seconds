@@ -27,18 +27,19 @@ export var SPEED_DIVISOR = 7
 export var JUMP_FORCE = 2000
 export var RELEASED_JUMP_FORCE = 800
 export var GRAVITY = 6000
-export var MAX_FALL_SPEED = 1400
+export var MAX_FALL_SPEED = 1000
 
 export var JUMP_FORCE_WATER = 400
 export var RELEASED_JUMP_FORCE_WATER = 150
 export var GRAVITY_WATER = 1250
-export var MAX_FALL_SPEED_WATER = 700
+export var MAX_FALL_SPEED_WATER = 500
 # TODO: set to var to change on runtime
 export var MAX_JUMP_COUNT = 2
 
 const scn_bullet = preload("res://scenes/Bullet/BulletTest.tscn")
 const scn_youDead = preload("res://scenes/YouDead/YouDead.tscn")
 const scn_freeze = preload("res://scenes/Freeze/Freeze.tscn")
+const scn_hit = preload("res://scenes/GotHit/GotHit.tscn")
 
 var freeze_screen
 var freeze_screen_path
@@ -64,17 +65,16 @@ signal time_freeze_end
 var shoot_timer
 const SHOOT_TIMER_MAX = 3
 
+
 func _ready():
 	set_process(true)
 	set_process_input(true)
 	sprite_node = get_node("Sprite")
-#	animation_player = get_node("/root/World/AnimationPlayer")
 	set_life(start_life[SaveFile._get_save_dictionary()["progress"]["life"]])
 	time_freeze_time = time_freeze_time_array[SaveFile._get_save_dictionary()["progress"]["magic"]]
 	damage = damage_Array[SaveFile._get_save_dictionary()["progress"]["attack"]]
 	shoot_timer = SHOOT_TIMER_MAX
 	
-	#animation_player.play("Idle")
 	
 func create_bullet(pos):
 	var bullet = scn_bullet.instance()
@@ -123,7 +123,6 @@ func _input(event):
 		state = "shoot"
  
 func _process(delta):
-	# INPUT
 
 	if input_direction:
 		direction = input_direction
@@ -174,6 +173,8 @@ func _process(delta):
 		state = "fall"
 	
 	if(((is_colliding() && get_collider().get_collision_mask() in [4, 8]) or got_hit) && invis_timer <= 0):
+		var hit = scn_hit.instance()
+		utils.main_node.add_child(hit)
 		set_life(life - 1)
 		got_hit = false
 		invis_timer = MAX_INVIS_TIMER
@@ -235,7 +236,6 @@ func set_life(new_value):
 		get_tree().set_pause(true)
 		var youDead = scn_youDead.instance()
 		utils.main_node.add_child(youDead)
-		utils.main_node.move_child(youDead,0)
 	pass
 
 func _got_hit():
@@ -295,3 +295,4 @@ func _in_water():
 	
 func _out_water():
 	inWater = false
+

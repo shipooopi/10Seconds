@@ -13,3 +13,8 @@ func _ready():
 func _on_Level1_pressed():
 	#get_tree().change_scene("res://World.tscn")
 	get_tree().change_scene("res://scenes/Levels/Level1/LevelTest.tscn")
+
+
+func _on_Level1Life_pressed():
+	get_tree().change_scene("res://scenes/Levels/Level1Life/Level1Life.tscn")
+	pass # replace with function body

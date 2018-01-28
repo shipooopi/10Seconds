@@ -10,6 +10,5 @@ func _process(delta):
 	if Input.is_action_pressed("End"):
 		get_tree().quit()
 	if Input.is_action_pressed("Restart"):
-		set_pause_mode(0)
 		get_tree().set_pause(false)
 		get_tree().reload_current_scene()
