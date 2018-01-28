@@ -6,6 +6,8 @@ var timer_node
 const scn_youDead = preload("res://scenes/YouDead/YouDead.tscn")
 const scn_youWin = preload("res://scenes/YouWin/YouWin.tscn")
 
+var winShow = false
+
 func _ready():
 	label_node = get_node("Label")
 	timer_node = get_node("Timer")
@@ -37,7 +39,8 @@ func _on_Area2D_body_enter( body ):
 	if(body.get_name() == "Player"):
 		timer_node.set_process(false)
 		get_tree().set_pause(true)
-		if(timer_node.get_time_left() > 0):
+		if(timer_node.get_time_left() > 0 and not winShow):
+			winShow = true
 			var youWin = scn_youWin.instance()
 			utils.main_node.add_child(youWin)
 			utils.main_node.move_child(youWin,0)

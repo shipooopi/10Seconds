@@ -18,3 +18,8 @@ func _on_Level1_pressed():
 func _on_Level1Life_pressed():
 	get_tree().change_scene("res://scenes/Levels/Level1Life/Level1Life.tscn")
 	pass # replace with function body
+
+
+func _on_Level1Attack_pressed():
+	get_tree().change_scene("res://scenes/Levels/Level1Attack/Level1Attack.tscn")
+	pass # replace with function body
