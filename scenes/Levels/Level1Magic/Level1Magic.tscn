@@ -1,21 +1,22 @@
-[gd_scene load_steps=20 format=1]
+[gd_scene load_steps=21 format=1]
 
-[ext_resource path="res://scenes/Tileset/Background/BackgroundTiles.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/Fackel/Fackel.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Organisation/BackgroundSeperator.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Tileset/GroundTiles/GroundTileMap.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/Tileset/GurkenTiles/GurkenTileMap.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/DackelCannon/DackelCannon.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/Enemy/Enemy.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/Timer/Timer.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/ChainChomp/ChainChomp.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/Tileset/OneWays/OneWayDownTileMap.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/Tileset/OneWays/OneWayLeftTileMap.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/Tileset/OneWays/OneWayUpTileMap.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/Tileset/OneWays/OneWayRightTileMap.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/WaterNode/WaterNode.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/LevelEnd/LevelEnd.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scenes/Player/myPlayer.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/Levels/Level1Magic/Level1Magic.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Tileset/Background/BackgroundTiles.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Fackel/Fackel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Organisation/BackgroundSeperator.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Tileset/GroundTiles/GroundTileMap.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Tileset/GurkenTiles/GurkenTileMap.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/DackelCannon/DackelCannon.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Enemy/Enemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Timer/Timer.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/ChainChomp/ChainChomp.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/Tileset/OneWays/OneWayDownTileMap.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/Tileset/OneWays/OneWayLeftTileMap.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/Tileset/OneWays/OneWayUpTileMap.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/Tileset/OneWays/OneWayRightTileMap.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/WaterNode/WaterNode.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/LevelEnd/LevelEnd.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/Player/myPlayer.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Animation" id=1]
 
@@ -99,39 +100,62 @@ tracks/1/keys = {
 
 [node name="Level1" type="Node2D"]
 
-[node name="BackgroundTiles" parent="." instance=ExtResource( 1 )]
+script/script = ExtResource( 1 )
 
-tile_data = IntArray( 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 23, 0, 24, 0, 25, 0, 26, 0, 27, 0, 28, 0, 29, 0, 65536, 0, 65537, 0, 65538, 0, 65539, 0, 65540, 0, 65541, 0, 65542, 0, 65543, 0, 65544, 0, 65545, 0, 65546, 0, 65547, 0, 65548, 0, 65549, 0, 65550, 0, 65551, 0, 65552, 0, 65553, 0, 65554, 0, 65555, 0, 65556, 0, 65557, 0, 65558, 0, 65559, 0, 65560, 0, 65561, 0, 65562, 0, 65563, 0, 65564, 0, 65565, 0, 131072, 0, 131073, 0, 131074, 0, 131075, 0, 131076, 0, 131077, 0, 131078, 0, 131079, 0, 131080, 0, 131081, 0, 131082, 0, 131083, 0, 131084, 0, 131085, 0, 131086, 0, 131087, 0, 131088, 0, 131089, 0, 131090, 0, 131091, 0, 131092, 0, 131093, 0, 131094, 0, 131095, 0, 131096, 0, 131097, 0, 131098, 0, 131099, 0, 131100, 0, 131101, 0, 196608, 0, 196609, 0, 196610, 0, 196611, 0, 196612, 0, 196613, 0, 196614, 0, 196615, 0, 196616, 0, 196617, 0, 196618, 0, 196619, 0, 196620, 0, 196621, 0, 196622, 0, 196623, 0, 196624, 0, 196625, 0, 196626, 0, 196627, 0, 196628, 0, 196629, 0, 196630, 0, 196631, 0, 196632, 0, 196633, 0, 196634, 0, 196635, 0, 196636, 0, 196637, 0, 262144, 0, 262145, 0, 262146, 0, 262147, 0, 262148, 0, 262149, 0, 262150, 0, 262151, 0, 262152, 0, 262153, 0, 262154, 0, 262155, 0, 262156, 0, 262157, 0, 262158, 0, 262159, 0, 262160, 0, 262161, 0, 262162, 0, 262163, 0, 262164, 0, 262165, 0, 262166, 0, 262167, 0, 262168, 0, 262169, 0, 262170, 0, 262171, 0, 262172, 0, 262173, 0, 327680, 0, 327681, 0, 327682, 0, 327683, 0, 327684, 0, 327685, 0, 327686, 0, 327687, 0, 327688, 0, 327689, 0, 327690, 0, 327691, 0, 327692, 0, 327693, 0, 327694, 0, 327695, 0, 327696, 0, 327697, 0, 327698, 0, 327699, 0, 327700, 0, 327701, 0, 327702, 0, 327703, 0, 327704, 0, 327705, 0, 327706, 0, 327707, 0, 327708, 0, 327709, 0, 393216, 0, 393217, 0, 393218, 0, 393219, 0, 393220, 0, 393221, 0, 393222, 0, 393223, 0, 393224, 0, 393225, 0, 393226, 0, 393227, 0, 393228, 0, 393229, 0, 393230, 0, 393231, 0, 393232, 0, 393233, 0, 393234, 0, 393235, 0, 393236, 0, 393237, 0, 393238, 0, 393239, 0, 393240, 0, 393241, 0, 393242, 0, 393243, 0, 393244, 0, 393245, 0, 458752, 0, 458753, 0, 458754, 0, 458755, 0, 458756, 0, 458757, 0, 458758, 0, 458759, 0, 458760, 0, 458761, 0, 458762, 0, 458763, 0, 458764, 0, 458765, 0, 458766, 0, 458767, 0, 458768, 0, 458769, 0, 458770, 0, 458771, 0, 458772, 0, 458773, 0, 458774, 0, 458775, 0, 458776, 0, 458777, 0, 458778, 0, 458779, 0, 458780, 0, 458781, 0, 524288, 0, 524289, 0, 524290, 0, 524291, 0, 524292, 0, 524293, 0, 524294, 0, 524295, 0, 524296, 0, 524297, 0, 524298, 0, 524299, 0, 524300, 0, 524301, 0, 524302, 0, 524303, 0, 524304, 0, 524305, 0, 524306, 0, 524307, 0, 524308, 0, 524309, 0, 524310, 0, 524311, 0, 524312, 0, 524313, 0, 524314, 0, 524315, 0, 524316, 0, 524317, 0, 589824, 0, 589825, 0, 589826, 0, 589827, 0, 589828, 0, 589829, 0, 589830, 0, 589831, 0, 589832, 0, 589833, 0, 589834, 0, 589835, 0, 589836, 0, 589837, 0, 589838, 0, 589839, 0, 589840, 0, 589841, 0, 589842, 0, 589843, 0, 589844, 0, 589845, 0, 589846, 0, 589847, 0, 589848, 0, 589849, 0, 589850, 0, 589851, 0, 589852, 0, 589853, 0, 655360, 0, 655361, 0, 655362, 0, 655363, 0, 655364, 0, 655365, 0, 655366, 0, 655367, 0, 655368, 0, 655369, 0, 655370, 0, 655371, 0, 655372, 0, 655373, 0, 655374, 0, 655375, 0, 655376, 0, 655377, 0, 655378, 0, 655379, 0, 655380, 0, 655381, 0, 655382, 0, 655383, 0, 655384, 0, 655385, 0, 655386, 0, 655387, 0, 655388, 0, 655389, 0, 720896, 0, 720897, 0, 720898, 0, 720899, 0, 720900, 0, 720901, 0, 720902, 0, 720903, 0, 720904, 0, 720905, 0, 720906, 0, 720907, 0, 720908, 0, 720909, 0, 720910, 0, 720911, 0, 720912, 0, 720913, 0, 720914, 0, 720915, 0, 720916, 0, 720917, 0, 720918, 0, 720919, 0, 720920, 0, 720921, 0, 720922, 0, 720923, 0, 720924, 0, 720925, 0, 786432, 0, 786433, 0, 786434, 0, 786435, 0, 786436, 0, 786437, 0, 786438, 0, 786439, 0, 786440, 0, 786441, 0, 786442, 0, 786443, 0, 786444, 0, 786445, 0, 786446, 0, 786447, 0, 786448, 0, 786449, 0, 786450, 0, 786451, 0, 786452, 0, 786453, 0, 786454, 0, 786455, 0, 786456, 0, 786457, 0, 786458, 0, 786459, 0, 786460, 0, 786461, 0, 851968, 0, 851969, 0, 851970, 0, 851971, 0, 851972, 0, 851973, 0, 851974, 0, 851975, 0, 851976, 0, 851977, 0, 851978, 0, 851979, 0, 851980, 0, 851981, 0, 851982, 0, 851983, 0, 851984, 0, 851985, 0, 851986, 0, 851987, 0, 851988, 0, 851989, 0, 851990, 0, 851991, 0, 851992, 0, 851993, 0, 851994, 0, 851995, 0, 851996, 0, 851997, 0, 917504, 0, 917505, 0, 917506, 0, 917507, 0, 917508, 0, 917509, 0, 917510, 0, 917511, 0, 917512, 0, 917513, 0, 917514, 0, 917515, 0, 917516, 0, 917517, 0, 917518, 0, 917519, 0, 917520, 0, 917521, 0, 917522, 0, 917523, 0, 917524, 0, 917525, 0, 917526, 0, 917527, 0, 917528, 0, 917529, 0, 917530, 0, 917531, 0, 917532, 0, 917533, 0, 983040, 0, 983041, 0, 983042, 0, 983043, 0, 983044, 0, 983045, 0, 983046, 0, 983047, 0, 983048, 0, 983049, 0, 983050, 0, 983051, 0, 983052, 0, 983053, 0, 983054, 0, 983055, 0, 983056, 0, 983057, 0, 983058, 0, 983059, 0, 983060, 0, 983061, 0, 983062, 0, 983063, 0, 983064, 0, 983065, 0, 983066, 0, 983067, 0, 983068, 0, 983069, 0, 1048576, 0, 1048577, 0, 1048578, 0, 1048579, 0, 1048580, 0, 1048581, 0, 1048582, 0, 1048583, 0, 1048584, 0, 1048585, 0, 1048586, 0, 1048587, 0, 1048588, 0, 1048589, 0, 1048590, 0, 1048591, 0, 1048592, 0, 1048593, 0, 1048594, 0, 1048595, 0, 1048596, 0, 1048597, 0, 1048598, 0, 1048599, 0, 1048600, 0, 1048601, 0, 1048602, 0, 1048603, 0, 1048604, 0, 1048605, 0 )
+[node name="BackgroundTiles" parent="." instance=ExtResource( 2 )]
 
-[node name="Fackel" parent="." instance=ExtResource( 2 )]
+tile_data = IntArray( 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 23, 0, 24, 0, 25, 0, 26, 0, 27, 0, 28, 0, 29, 0, 65536, 0, 65537, 0, 65538, 0, 65539, 0, 65540, 0, 65541, 0, 65542, 0, 65543, 0, 65544, 0, 65545, 0, 65546, 0, 65547, 0, 65548, 0, 65549, 0, 65550, 0, 65551, 0, 65552, 0, 65553, 0, 65554, 0, 65555, 0, 65556, 0, 65557, 0, 65558, 0, 65559, 0, 65560, 0, 65561, 0, 65562, 0, 65563, 0, 65564, 0, 65565, 0, 131072, 0, 131073, 0, 131074, 0, 131075, 0, 131076, 0, 131077, 3, 131078, 0, 131079, 0, 131080, 0, 131081, 0, 131082, 0, 131083, 0, 131084, 0, 131085, 0, 131086, 0, 131087, 0, 131088, 0, 131089, 0, 131090, 0, 131091, 0, 131092, 0, 131093, 0, 131094, 0, 131095, 0, 131096, 0, 131097, 0, 131098, 8, 131099, 0, 131100, 0, 131101, 0, 196608, 0, 196609, 0, 196610, 0, 196611, 0, 196612, 0, 196613, 0, 196614, 0, 196615, 0, 196616, 0, 196617, 0, 196618, 0, 196619, 0, 196620, 0, 196621, 0, 196622, 0, 196623, 0, 196624, 0, 196625, 0, 196626, 0, 196627, 0, 196628, 0, 196629, 0, 196630, 0, 196631, 0, 196632, 0, 196633, 0, 196634, 0, 196635, 0, 196636, 0, 196637, 0, 262144, 0, 262145, 0, 262146, 0, 262147, 0, 262148, 0, 262149, 0, 262150, 0, 262151, 0, 262152, 0, 262153, 0, 262154, 0, 262155, 0, 262156, 0, 262157, 0, 262158, 0, 262159, 0, 262160, 0, 262161, 0, 262162, 0, 262163, 0, 262164, 0, 262165, 0, 262166, 0, 262167, 0, 262168, 0, 262169, 0, 262170, 0, 262171, 0, 262172, 0, 262173, 0, 327680, 0, 327681, 0, 327682, 0, 327683, 0, 327684, 0, 327685, 0, 327686, 0, 327687, 0, 327688, 0, 327689, 0, 327690, 0, 327691, 9, 327692, 11, 327693, 10, 327694, 11, 327695, 11, 327696, 12, 327697, 0, 327698, 0, 327699, 0, 327700, 0, 327701, 0, 327702, 0, 327703, 0, 327704, 0, 327705, 0, 327706, 0, 327707, 0, 327708, 0, 327709, 0, 393216, 0, 393217, 0, 393218, 0, 393219, 0, 393220, 0, 393221, 0, 393222, 0, 393223, 0, 393224, 0, 393225, 0, 393226, 0, 393227, 14, 393228, 16, 393229, 15, 393230, 16, 393231, 16, 393232, 17, 393233, 0, 393234, 0, 393235, 0, 393236, 0, 393237, 0, 393238, 0, 393239, 0, 393240, 0, 393241, 0, 393242, 0, 393243, 0, 393244, 0, 393245, 0, 458752, 0, 458753, 0, 458754, 0, 458755, 0, 458756, 0, 458757, 4, 458758, 0, 458759, 0, 458760, 0, 458761, 0, 458762, 0, 458763, 19, 458764, 21, 458765, 20, 458766, 21, 458767, 21, 458768, 22, 458769, 0, 458770, 0, 458771, 0, 458772, 0, 458773, 0, 458774, 0, 458775, 0, 458776, 0, 458777, 0, 458778, 0, 458779, 0, 458780, 0, 458781, 0, 524288, 0, 524289, 0, 524290, 0, 524291, 0, 524292, 0, 524293, 0, 524294, 0, 524295, 0, 524296, 0, 524297, 0, 524298, 0, 524299, 0, 524300, 0, 524301, 0, 524302, 0, 524303, 0, 524304, 0, 524305, 0, 524306, 0, 524307, 0, 524308, 0, 524309, 0, 524310, 0, 524311, 0, 524312, 0, 524313, 0, 524314, 0, 524315, 0, 524316, 0, 524317, 0, 589824, 0, 589825, 0, 589826, 0, 589827, 0, 589828, 0, 589829, 0, 589830, 0, 589831, 0, 589832, 0, 589833, 0, 589834, 0, 589835, 0, 589836, 0, 589837, 0, 589838, 0, 589839, 0, 589840, 0, 589841, 0, 589842, 0, 589843, 0, 589844, 0, 589845, 0, 589846, 0, 589847, 0, 589848, 0, 589849, 0, 589850, 0, 589851, 0, 589852, 0, 589853, 0, 655360, 0, 655361, 0, 655362, 0, 655363, 0, 655364, 0, 655365, 0, 655366, 0, 655367, 0, 655368, 0, 655369, 0, 655370, 0, 655371, 0, 655372, 0, 655373, 0, 655374, 0, 655375, 0, 655376, 0, 655377, 0, 655378, 0, 655379, 0, 655380, 0, 655381, 0, 655382, 0, 655383, 0, 655384, 0, 655385, 0, 655386, 0, 655387, 0, 655388, 0, 655389, 0, 720896, 0, 720897, 0, 720898, 0, 720899, 0, 720900, 0, 720901, 0, 720902, 0, 720903, 0, 720904, 6, 720905, 0, 720906, 0, 720907, 0, 720908, 0, 720909, 0, 720910, 0, 720911, 0, 720912, 0, 720913, 0, 720914, 0, 720915, 0, 720916, 0, 720917, 0, 720918, 0, 720919, 0, 720920, 0, 720921, 0, 720922, 0, 720923, 0, 720924, 0, 720925, 0, 786432, 0, 786433, 0, 786434, 0, 786435, 0, 786436, 0, 786437, 0, 786438, 0, 786439, 0, 786440, 0, 786441, 0, 786442, 0, 786443, 0, 786444, 0, 786445, 0, 786446, 0, 786447, 0, 786448, 0, 786449, 0, 786450, 0, 786451, 0, 786452, 2, 786453, 0, 786454, 0, 786455, 0, 786456, 0, 786457, 0, 786458, 0, 786459, 0, 786460, 0, 786461, 0, 851968, 0, 851969, 0, 851970, 0, 851971, 0, 851972, 0, 851973, 0, 851974, 0, 851975, 0, 851976, 0, 851977, 0, 851978, 0, 851979, 0, 851980, 0, 851981, 0, 851982, 0, 851983, 0, 851984, 0, 851985, 0, 851986, 0, 851987, 0, 851988, 0, 851989, 0, 851990, 0, 851991, 0, 851992, 0, 851993, 0, 851994, 0, 851995, 0, 851996, 0, 851997, 0, 917504, 0, 917505, 0, 917506, 0, 917507, 0, 917508, 0, 917509, 0, 917510, 0, 917511, 0, 917512, 0, 917513, 0, 917514, 0, 917515, 0, 917516, 0, 917517, 0, 917518, 0, 917519, 0, 917520, 1, 917521, 0, 917522, 0, 917523, 0, 917524, 0, 917525, 0, 917526, 0, 917527, 0, 917528, 0, 917529, 0, 917530, 0, 917531, 7, 917532, 0, 917533, 0, 983040, 0, 983041, 0, 983042, 0, 983043, 0, 983044, 0, 983045, 0, 983046, 0, 983047, 0, 983048, 0, 983049, 0, 983050, 0, 983051, 0, 983052, 0, 983053, 0, 983054, 0, 983055, 0, 983056, 0, 983057, 0, 983058, 0, 983059, 0, 983060, 0, 983061, 0, 983062, 0, 983063, 0, 983064, 0, 983065, 0, 983066, 0, 983067, 0, 983068, 0, 983069, 0, 1048576, 0, 1048577, 0, 1048578, 0, 1048579, 0, 1048580, 0, 1048581, 0, 1048582, 0, 1048583, 0, 1048584, 0, 1048585, 0, 1048586, 0, 1048587, 0, 1048588, 0, 1048589, 0, 1048590, 0, 1048591, 0, 1048592, 0, 1048593, 0, 1048594, 0, 1048595, 0, 1048596, 0, 1048597, 0, 1048598, 0, 1048599, 0, 1048600, 0, 1048601, 0, 1048602, 0, 1048603, 0, 1048604, 0, 1048605, 0 )
+
+[node name="Fackel" parent="." instance=ExtResource( 3 )]
 
 process/pause_mode = 1
-transform/pos = Vector2( 624, -48 )
+transform/pos = Vector2( 592, 208 )
 
-[node name="BackgroundSeperator" parent="." instance=ExtResource( 3 )]
+[node name="Fackel4" parent="." instance=ExtResource( 3 )]
 
-[node name="GroundTiles" parent="." instance=ExtResource( 4 )]
+process/pause_mode = 1
+transform/pos = Vector2( 416, 496 )
+
+[node name="Fackel5" parent="." instance=ExtResource( 3 )]
+
+process/pause_mode = 1
+transform/pos = Vector2( 352, 64 )
+
+[node name="Fackel6" parent="." instance=ExtResource( 3 )]
+
+process/pause_mode = 1
+transform/pos = Vector2( 832, 320 )
+
+[node name="Fackel2" parent="." instance=ExtResource( 3 )]
+
+process/pause_mode = 1
+transform/pos = Vector2( 304, 208 )
+
+[node name="BackgroundSeperator" parent="." instance=ExtResource( 4 )]
+
+[node name="GroundTiles" parent="." instance=ExtResource( 5 )]
 
 tile_data = IntArray( 0, 9, 1, 13, 2, 13, 3, 13, 4, 13, 5, 13, 6, 13, 7, 13, 8, 13, 9, 13, 10, 13, 11, 13, 12, 13, 13, 13, 14, 13, 15, 13, 16, 13, 17, 13, 18, 13, 19, 13, 20, 13, 21, 13, 22, 13, 23, 13, 24, 13, 25, 13, 26, 13, 27, 13, 28, 13, 29, 9, 65536, 10, 65565, 8, 131072, 10, 131101, 8, 196608, 10, 196611, 4, 196637, 8, 262144, 10, 262148, 5, 262149, 6, 262150, 6, 262151, 1, 262152, 6, 262153, 6, 262154, 6, 262155, 6, 262156, 6, 262157, 6, 262158, 6, 262159, 6, 262160, 6, 262161, 6, 262162, 6, 262163, 6, 262164, 1, 262165, 1, 262166, 1, 262167, 1, 262168, 2, 262173, 8, 327680, 10, 327687, 11, 327689, 1073741883, 327690, 1073741884, 327691, 1073741885, 327692, 1073741886, 327700, 8, 327701, 13, 327702, 13, 327703, 13, 327704, 10, 327709, 9, 393216, 10, 393223, 11, 393236, 11, 393240, 11, 393245, 8, 458752, 38, 458753, 24, 458754, 24, 458755, 25, 458759, 11, 458772, 8, 458776, 10, 458781, 8, 524288, 41, 524289, 27, 524290, 27, 524291, 31, 524295, 8, 524296, 1, 524297, 1, 524298, 1, 524299, 1, 524300, 1, 524301, 1, 524302, 1, 524303, 1, 524304, 1, 524305, 1, 524306, 1, 524307, 1, 524308, 9, 524312, 10, 524317, 8, 589824, 41, 589825, 27, 589826, 27, 589827, 31, 589830, 6, 589831, 13, 589832, 13, 589833, 13, 589834, 13, 589835, 13, 589836, 13, 589837, 13, 589838, 13, 589839, 13, 589840, 13, 589841, 13, 589842, 13, 589843, 13, 589844, 14, 589848, 11, 589853, 8, 655360, 41, 655361, 27, 655362, 27, 655363, 31, 655366, 11, 655384, 11, 655389, 8, 720896, 41, 720897, 27, 720898, 27, 720899, 31, 720902, 11, 720920, 8, 720925, 8, 786432, 41, 786433, 27, 786434, 27, 786435, 31, 786438, 11, 786456, 11, 786461, 8, 851968, 41, 851969, 27, 851970, 27, 851971, 31, 851974, 11, 851979, 5, 851980, 6, 851981, 6, 851982, 6, 851983, 6, 851984, 6, 851985, 6, 851986, 6, 851987, 6, 851988, 6, 851989, 6, 851990, 6, 851991, 6, 851992, 14, 851997, 8, 917504, 44, 917505, 45, 917506, 45, 917507, 46, 917510, 11, 917533, 8, 983040, 10, 983046, 15, 983069, 8, 1048576, 9, 1048577, 1, 1048578, 1, 1048579, 1, 1048580, 1, 1048581, 1, 1048582, 1, 1048583, 1, 1048584, 1, 1048585, 1, 1048586, 1, 1048587, 1, 1048588, 1, 1048589, 1, 1048590, 1, 1048591, 1, 1048592, 1, 1048593, 1, 1048594, 1, 1048595, 1, 1048596, 1, 1048597, 1, 1048598, 1, 1048599, 1, 1048600, 1, 1048601, 1, 1048602, 1, 1048603, 1, 1048604, 1, 1048605, 9 )
 
-[node name="GurkenTiles" parent="." instance=ExtResource( 5 )]
+[node name="GurkenTiles" parent="." instance=ExtResource( 6 )]
 
 tile_data = IntArray( 131093, 0, 196628, 0, 196629, 1, 196630, 0, 262147, 5, 327707, 2, 327708, 3, 393219, 0, 458773, 8, 458775, 6, 524309, 8, 524311, 6, 589829, 6, 720921, 3, 720922, 4, 786445, 0, 786449, 0, 786453, 0, 786454, 0, 786455, 0, 917508, 8 )
 
-[node name="DackelCannon3" parent="." instance=ExtResource( 6 )]
+[node name="DackelCannon3" parent="." instance=ExtResource( 7 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 240, 496 )
 direction = 1
 
-[node name="DackelCannon4" parent="." instance=ExtResource( 6 )]
+[node name="DackelCannon4" parent="." instance=ExtResource( 7 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 368, 464 )
 direction = 1
 
-[node name="Enemy" parent="." instance=ExtResource( 7 )]
+[node name="Enemy" parent="." instance=ExtResource( 8 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 816, 224 )
 collision/layers = 4
 collision/mask = 4
@@ -158,7 +182,7 @@ collision/mask = 4
 anims/fly = SubResource( 1 )
 autoplay = "fly"
 
-[node name="Enemy1" parent="." instance=ExtResource( 7 )]
+[node name="Enemy1" parent="." instance=ExtResource( 8 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 864, 320 )
@@ -180,8 +204,9 @@ editor/display_folded = true
 anims/fly = SubResource( 2 )
 autoplay = "fly"
 
-[node name="Enemy2" parent="." instance=ExtResource( 7 )]
+[node name="Enemy2" parent="." instance=ExtResource( 8 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 912, 416 )
 collision/layers = 4
 collision/mask = 4
@@ -201,11 +226,11 @@ editor/display_folded = true
 anims/fly = SubResource( 3 )
 autoplay = "fly"
 
-[node name="Timer" parent="." instance=ExtResource( 8 )]
+[node name="Timer" parent="." instance=ExtResource( 9 )]
 
 editor/display_folded = true
 
-[node name="ChainChomp" parent="." instance=ExtResource( 9 )]
+[node name="ChainChomp" parent="." instance=ExtResource( 10 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 368, 112 )
@@ -215,65 +240,65 @@ transform/pos = Vector2( 368, 112 )
 collision/layers = 4
 collision/mask = 4
 
-[node name="ChainChomp1" parent="." instance=ExtResource( 9 )]
+[node name="ChainChomp1" parent="." instance=ExtResource( 10 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 496, 48 )
 
-[node name="OneWayDown" parent="." instance=ExtResource( 10 )]
+[node name="OneWayDown" parent="." instance=ExtResource( 11 )]
 
-[node name="OneWayLeft" parent="." instance=ExtResource( 11 )]
+[node name="OneWayLeft" parent="." instance=ExtResource( 12 )]
 
 tile_data = IntArray( 917528, 0, 983064, 2 )
 
-[node name="OneWayUp" parent="." instance=ExtResource( 12 )]
+[node name="OneWayUp" parent="." instance=ExtResource( 13 )]
 
 tile_data = IntArray( 131087, 3, 196609, 0, 196610, 2, 983051, 3 )
 
-[node name="OneWayRight" parent="." instance=ExtResource( 13 )]
+[node name="OneWayRight" parent="." instance=ExtResource( 14 )]
 
 transform/pos = Vector2( -96, 0 )
 
-[node name="WaterNode" parent="." instance=ExtResource( 14 )]
+[node name="WaterNode" parent="." instance=ExtResource( 15 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 64, 256 )
 transform/scale = Vector2( 1, 1 )
 
-[node name="WaterNode1" parent="." instance=ExtResource( 14 )]
+[node name="WaterNode1" parent="." instance=ExtResource( 15 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 64, 384 )
 transform/scale = Vector2( 1, 1 )
 
-[node name="WaterNode2" parent="." instance=ExtResource( 14 )]
+[node name="WaterNode2" parent="." instance=ExtResource( 15 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 64, 320 )
 transform/scale = Vector2( 1, 1 )
 
-[node name="WaterNode3" parent="." instance=ExtResource( 14 )]
+[node name="WaterNode3" parent="." instance=ExtResource( 15 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 64, 448 )
 transform/scale = Vector2( 1, 1 )
 
-[node name="LevelEnd" parent="." instance=ExtResource( 15 )]
+[node name="LevelEnd" parent="." instance=ExtResource( 16 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 688, 208 )
 
-[node name="LevelEnd1" parent="." instance=ExtResource( 15 )]
+[node name="LevelEnd1" parent="." instance=ExtResource( 16 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 752, 208 )
 
-[node name="LevelEnd2" parent="." instance=ExtResource( 15 )]
+[node name="LevelEnd2" parent="." instance=ExtResource( 16 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 720, 208 )
 
-[node name="Player" parent="." instance=ExtResource( 16 )]
+[node name="Player" parent="." instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 48, 496 )
 
@@ -301,6 +326,8 @@ transform/pos = Vector2( 48, 496 )
 
 [connection signal="body_exit" from="Enemy2/Area2DFlip" to="Player" method="_on_Area2DFlip_body_exit"]
 
+[connection signal="levelFinish" from="Timer" to="." method="_on_Timer_levelFinish"]
+
 [connection signal="body_enter" from="ChainChomp/Hitbox" to="Player" method="_on_Hitbox_body_enter"]
 
 [connection signal="body_exit" from="ChainChomp/Hitbox" to="Player" method="_on_Hitbox_body_exit"]
@@ -315,41 +342,57 @@ transform/pos = Vector2( 48, 496 )
 
 [connection signal="body_enter" from="LevelEnd2/Area2D" to="Timer" method="_on_Area2D_body_enter"]
 
-[connection signal="time_freeze" from="Player" to="ChainChomp" method="_on_Player_time_freeze"]
-
-[connection signal="time_freeze" from="Player" to="ChainChomp1" method="_on_Player_time_freeze"]
-
 [connection signal="time_freeze" from="Player" to="Enemy1" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze" from="Player" to="Enemy" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze" from="Player" to="Enemy2" method="_on_Player_time_freeze"]
-
-[connection signal="time_freeze" from="Player" to="Fackel" method="_on_Player_time_freeze"]
+[connection signal="time_freeze" from="Player" to="DackelCannon4" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze" from="Player" to="DackelCannon3" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze" from="Player" to="DackelCannon4" method="_on_Player_time_freeze"]
-
 [connection signal="time_freeze" from="Player" to="Timer" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze_end" from="Player" to="ChainChomp" method="_on_Player_time_freeze_end"]
+[connection signal="time_freeze" from="Player" to="Fackel" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze_end" from="Player" to="ChainChomp1" method="_on_Player_time_freeze_end"]
+[connection signal="time_freeze" from="Player" to="Fackel2" method="_on_Player_time_freeze"]
+
+[connection signal="time_freeze" from="Player" to="Fackel6" method="_on_Player_time_freeze"]
+
+[connection signal="time_freeze" from="Player" to="Fackel4" method="_on_Player_time_freeze"]
+
+[connection signal="time_freeze" from="Player" to="Fackel5" method="_on_Player_time_freeze"]
+
+[connection signal="time_freeze" from="Player" to="ChainChomp1" method="_on_Player_time_freeze"]
+
+[connection signal="time_freeze" from="Player" to="ChainChomp" method="_on_Player_time_freeze"]
+
+[connection signal="time_freeze" from="Player" to="Enemy2" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze_end" from="Player" to="Enemy1" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="Enemy" method="_on_Player_time_freeze_end"]
 
-[connection signal="time_freeze_end" from="Player" to="Enemy2" method="_on_Player_time_freeze_end"]
-
-[connection signal="time_freeze_end" from="Player" to="Fackel" method="_on_Player_time_freeze_end"]
+[connection signal="time_freeze_end" from="Player" to="DackelCannon4" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="DackelCannon3" method="_on_Player_time_freeze_end"]
 
-[connection signal="time_freeze_end" from="Player" to="DackelCannon4" method="_on_Player_time_freeze_end"]
-
 [connection signal="time_freeze_end" from="Player" to="Timer" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="Fackel" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="Fackel2" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="Fackel6" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="Fackel4" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="Fackel5" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="ChainChomp1" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="ChainChomp" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="Enemy2" method="_on_Player_time_freeze_end"]
 
 
 [editable path="Enemy"]

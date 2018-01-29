@@ -8,6 +8,8 @@ const scn_youWin = preload("res://scenes/YouWin/YouWin.tscn")
 
 var winShow = false
 
+signal levelFinish
+
 func _ready():
 	label_node = get_node("Label")
 	timer_node = get_node("Timer")
@@ -44,6 +46,7 @@ func _on_Area2D_body_enter( body ):
 			var youWin = scn_youWin.instance()
 			utils.main_node.add_child(youWin)
 			utils.main_node.move_child(youWin,0)
+			emit_signal("levelFinish")
 		else:
 			var youDead = scn_youDead.instance()
 			utils.main_node.add_child(youDead)
