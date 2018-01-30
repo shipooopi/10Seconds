@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=1]
+[gd_scene load_steps=20 format=1]
 
 [ext_resource path="res://scenes/Tileset/Background/BackgroundTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Fackel/Fackel.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://scenes/LevelEnd/LevelEnd.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/LeftMap/Left_Map.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/Player/myPlayer.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/Boss/Boss.tscn" type="PackedScene" id=18]
 
 [sub_resource type="Animation" id=1]
 
@@ -73,11 +74,11 @@ tile_data = IntArray( 0, 9, 1, 13, 2, 13, 3, 13, 4, 13, 5, 13, 6, 13, 7, 13, 8, 
 
 [node name="OneWayUp" parent="." instance=ExtResource( 5 )]
 
-tile_data = IntArray( 262154, 0, 262155, 2, 262159, 3, 327692, 3, 393228, 3, 393236, 3, 458754, 3, 458761, 3, 589839, 3, 720910, 0, 720911, 2, 786452, 3, 851969, 0, 851970, 2, 851982, 0, 851983, 1, 851984, 1, 851985, 1, 851986, 2, 917511, 0, 917512, 1, 917513, 1, 917514, 1, 917515, 2, 917532, 2, 1048593, 3 )
+tile_data = IntArray( 262154, 0, 262155, 2, 262159, 3, 327692, 3, 327707, 0, 327708, 2, 393228, 3, 393236, 3, 458754, 3, 458761, 3, 589839, 3, 720910, 0, 720911, 2, 786452, 3, 851969, 0, 851970, 2, 851982, 0, 851983, 1, 851984, 1, 851985, 1, 851986, 2, 917511, 0, 917512, 1, 917513, 1, 917514, 1, 917515, 2, 917532, 2, 1048593, 3 )
 
 [node name="GurkenTiles" parent="." instance=ExtResource( 6 )]
 
-tile_data = IntArray( 65552, 1, 65553, 1, 131075, 0, 131088, 5, 131089, 5, 196610, 2, 196628, 4, 262167, 2, 327707, 4, 393217, 4, 393240, 5, 393241, 5, 458766, 3, 458767, 3, 458768, 4, 458774, 4, 458780, 2, 524290, 2, 524299, 5, 524312, 0, 524314, 0, 589829, 2, 589833, 4, 589841, 0, 589848, 1, 589849, 0, 589850, 1, 655369, 4, 655377, 1, 655384, 1, 655385, 1, 655386, 1, 720897, 4, 720913, 5, 917518, 2, 917519, 3, 917520, 3 )
+tile_data = IntArray( 65552, 1, 65553, 1, 131075, 0, 131088, 5, 131089, 5, 196610, 2, 196628, 4, 262167, 2, 393217, 4, 393240, 5, 393241, 5, 458766, 3, 458767, 3, 458768, 4, 458774, 4, 458780, 2, 524290, 2, 524299, 5, 524312, 0, 524314, 0, 589829, 2, 589833, 4, 589841, 0, 589848, 1, 589849, 0, 589850, 1, 655369, 4, 655377, 1, 655384, 1, 655385, 1, 655386, 1, 655387, 0, 720897, 4, 720913, 5, 917518, 2, 917519, 3, 917520, 3 )
 
 [node name="Enemy" parent="." instance=ExtResource( 7 )]
 
@@ -208,22 +209,12 @@ transform/scale = Vector2( 1, 1 )
 [node name="LevelEnd" parent="." instance=ExtResource( 15 )]
 
 editor/display_folded = true
-transform/pos = Vector2( 816, 144 )
+transform/pos = Vector2( 880, 176 )
 
 [node name="LevelEnd1" parent="." instance=ExtResource( 15 )]
 
 editor/display_folded = true
-transform/pos = Vector2( 816, 112 )
-
-[node name="LevelEnd2" parent="." instance=ExtResource( 15 )]
-
-editor/display_folded = true
-transform/pos = Vector2( 816, 80 )
-
-[node name="LevelEnd3" parent="." instance=ExtResource( 15 )]
-
-editor/display_folded = true
-transform/pos = Vector2( 816, 48 )
+transform/pos = Vector2( 912, 176 )
 
 [node name="Left_Map" parent="." instance=ExtResource( 16 )]
 
@@ -252,6 +243,10 @@ transform/pos = Vector2( 544, 672 )
 [node name="Player" parent="." instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 48, 496 )
+
+[node name="Boss" parent="." instance=ExtResource( 18 )]
+
+transform/pos = Vector2( 864, 96 )
 
 [connection signal="body_enter" from="Enemy/Area2D" to="Player" method="_on_Area2D_body_enter"]
 
@@ -309,9 +304,19 @@ transform/pos = Vector2( 48, 496 )
 
 [connection signal="body_enter" from="LevelEnd1/Area2D" to="Timer" method="_on_Area2D_body_enter"]
 
-[connection signal="body_enter" from="LevelEnd2/Area2D" to="Timer" method="_on_Area2D_body_enter"]
+[connection signal="time_freeze" from="Player" to="Enemy4" method="_on_Player_time_freeze"]
 
-[connection signal="body_enter" from="LevelEnd3/Area2D" to="Timer" method="_on_Area2D_body_enter"]
+[connection signal="time_freeze" from="Player" to="Enemy5" method="_on_Player_time_freeze"]
+
+[connection signal="time_freeze" from="Player" to="ChainChomp" method="_on_Player_time_freeze"]
+
+[connection signal="time_freeze" from="Player" to="Enemy3" method="_on_Player_time_freeze"]
+
+[connection signal="time_freeze" from="Player" to="Enemy" method="_on_Player_time_freeze"]
+
+[connection signal="time_freeze" from="Player" to="Enemy2" method="_on_Player_time_freeze"]
+
+[connection signal="time_freeze" from="Player" to="Enemy1" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze" from="Player" to="DackelCannon4" method="_on_Player_time_freeze"]
 
@@ -319,27 +324,27 @@ transform/pos = Vector2( 48, 496 )
 
 [connection signal="time_freeze" from="Player" to="DackelCannon5" method="_on_Player_time_freeze"]
 
+[connection signal="time_freeze" from="Player" to="Fackel2" method="_on_Player_time_freeze"]
+
 [connection signal="time_freeze" from="Player" to="Fackel" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze" from="Player" to="Fackel1" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze" from="Player" to="Timer" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze" from="Player" to="ChainChomp" method="_on_Player_time_freeze"]
+[connection signal="time_freeze_end" from="Player" to="Enemy4" method="_on_Player_time_freeze_end"]
 
-[connection signal="time_freeze" from="Player" to="Enemy" method="_on_Player_time_freeze"]
+[connection signal="time_freeze_end" from="Player" to="Enemy5" method="_on_Player_time_freeze_end"]
 
-[connection signal="time_freeze" from="Player" to="Enemy1" method="_on_Player_time_freeze"]
+[connection signal="time_freeze_end" from="Player" to="ChainChomp" method="_on_Player_time_freeze_end"]
 
-[connection signal="time_freeze" from="Player" to="Enemy5" method="_on_Player_time_freeze"]
+[connection signal="time_freeze_end" from="Player" to="Enemy3" method="_on_Player_time_freeze_end"]
 
-[connection signal="time_freeze" from="Player" to="Enemy4" method="_on_Player_time_freeze"]
+[connection signal="time_freeze_end" from="Player" to="Enemy" method="_on_Player_time_freeze_end"]
 
-[connection signal="time_freeze" from="Player" to="Enemy2" method="_on_Player_time_freeze"]
+[connection signal="time_freeze_end" from="Player" to="Enemy2" method="_on_Player_time_freeze_end"]
 
-[connection signal="time_freeze" from="Player" to="Enemy3" method="_on_Player_time_freeze"]
-
-[connection signal="time_freeze" from="Player" to="Fackel2" method="_on_Player_time_freeze"]
+[connection signal="time_freeze_end" from="Player" to="Enemy1" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="DackelCannon4" method="_on_Player_time_freeze_end"]
 
@@ -347,27 +352,13 @@ transform/pos = Vector2( 48, 496 )
 
 [connection signal="time_freeze_end" from="Player" to="DackelCannon5" method="_on_Player_time_freeze_end"]
 
+[connection signal="time_freeze_end" from="Player" to="Fackel2" method="_on_Player_time_freeze_end"]
+
 [connection signal="time_freeze_end" from="Player" to="Fackel" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="Fackel1" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="Timer" method="_on_Player_time_freeze_end"]
-
-[connection signal="time_freeze_end" from="Player" to="ChainChomp" method="_on_Player_time_freeze_end"]
-
-[connection signal="time_freeze_end" from="Player" to="Enemy" method="_on_Player_time_freeze_end"]
-
-[connection signal="time_freeze_end" from="Player" to="Enemy1" method="_on_Player_time_freeze_end"]
-
-[connection signal="time_freeze_end" from="Player" to="Enemy5" method="_on_Player_time_freeze_end"]
-
-[connection signal="time_freeze_end" from="Player" to="Enemy4" method="_on_Player_time_freeze_end"]
-
-[connection signal="time_freeze_end" from="Player" to="Enemy2" method="_on_Player_time_freeze_end"]
-
-[connection signal="time_freeze_end" from="Player" to="Enemy3" method="_on_Player_time_freeze_end"]
-
-[connection signal="time_freeze_end" from="Player" to="Fackel2" method="_on_Player_time_freeze_end"]
 
 
 [editable path="Enemy"]
@@ -382,5 +373,3 @@ transform/pos = Vector2( 48, 496 )
 [editable path="WaterNode"]
 [editable path="LevelEnd"]
 [editable path="LevelEnd1"]
-[editable path="LevelEnd2"]
-[editable path="LevelEnd3"]
