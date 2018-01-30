@@ -1,0 +1,110 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://fonts/import/PressStart2P_50_orange.fnt" type="BitmapFont" id=1]
+[ext_resource path="res://fonts/import/PressStart2P_20_white.fnt" type="BitmapFont" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+bg_color = Color( 0, 0, 0, 1 )
+light_color = Color( 0.8, 0.8, 0.8, 0 )
+dark_color = Color( 0.8, 0.8, 0.8, 0 )
+border_size = 0
+border_blend = true
+draw_bg = true
+
+[node name="Instructions" type="CanvasLayer"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="Panel" type="Panel" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 960.0
+margin/bottom = 540.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Label 2" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 11.0
+margin/right = 960.0
+margin/bottom = 73.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 0.421875, 0, 1 )
+text = "THE GREAT CATSBY"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 54.0
+margin/right = 960.0
+margin/bottom = 503.0
+custom_fonts/font = ExtResource( 2 )
+text = "
+The dogs are currently the mightiest
+ race in the world and only you can 
+change that! Try to beat king Bello's 
+challenge to overthrow him and become 
+king yourself! If you are not ready yet, 
+train your abilities to come back 
+and beat him!
+"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label1" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 6.0
+margin/top = 212.0
+margin/right = 960.0
+margin/bottom = 537.0
+custom_fonts/font = ExtResource( 2 )
+text = "
+_____________________________________________
+
+Instructions:
+ - Use the arrow keys to move
+ - Press 'Space' to jump
+ - Press 'X' to attack 
+(in the attack level and in 
+king Bello's room if you've mastered it)
+ - Press 'Y' to freeze time  
+(in the magic level and in 
+king Bello's room if you've mastered it)
+
+Press 'Q' to get to the World Map"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+

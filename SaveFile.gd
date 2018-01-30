@@ -17,6 +17,17 @@ func _ready():
 	#save_settings()
 	pass
 
+
+func is_empty():
+	var empty = false
+	for section in save_dictionary.keys():
+		for key in save_dictionary[section]:
+			if(config_file.set_value(section, key, save_dictionary[section][key]) != 0):
+				empty = true
+	if(empty):
+		return true
+	else:
+		return false
 func save_settings():
 	for section in save_dictionary.keys():
 		for key in save_dictionary[section]:
