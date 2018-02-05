@@ -4,6 +4,7 @@ const scn_instruction = preload("res://scenes/Instructions/Instructions.tscn")
 var instructions
 
 func _ready():
+	get_tree().set_pause(false)
 	if(SaveFile.is_empty()):
 		instructions = scn_instruction.instance()
 		utils.main_node.add_child(instructions)
