@@ -113,6 +113,8 @@ flat = false
 
 [connection signal="pressed" from="Level1" to="." method="_on_Level1_pressed"]
 
+[connection signal="pressed" from="clear save" to="clear save" method="_on_clear_save_pressed"]
+
 [connection signal="pressed" from="Level1Life" to="." method="_on_Level1Life_pressed"]
 
 [connection signal="pressed" from="LevelBoss" to="." method="_on_LevelBoss_pressed"]

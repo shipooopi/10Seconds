@@ -2,20 +2,11 @@ extends Node2D
 
 const scn_instruction = preload("res://scenes/Instructions/Instructions.tscn")
 var instructions
-var instructions_freed
 
 func _ready():
 	if(SaveFile.is_empty()):
 		instructions = scn_instruction.instance()
 		utils.main_node.add_child(instructions)
-		instructions_freed = false
-	set_process(true)
-
-func _process(delta):
-	if(Input.is_action_pressed("Quit")):
-		if(not instructions_freed):
-			instructions.queue_free()
-			instructions_freed = true
 
 func _on_Level1_pressed():
 	#get_tree().change_scene("res://World.tscn")

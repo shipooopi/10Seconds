@@ -313,53 +313,53 @@ transform/pos = Vector2( 48, 496 )
 
 [connection signal="time_freeze" from="Player" to="Enemy1" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze" from="Player" to="Enemy" method="_on_Player_time_freeze"]
-
-[connection signal="time_freeze" from="Player" to="Enemy3" method="_on_Player_time_freeze"]
-
-[connection signal="time_freeze" from="Player" to="Enemy2" method="_on_Player_time_freeze"]
-
 [connection signal="time_freeze" from="Player" to="ChainChomp" method="_on_Player_time_freeze"]
-
-[connection signal="time_freeze" from="Player" to="ChainChomp1" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze" from="Player" to="Enemy5" method="_on_Player_time_freeze"]
 
+[connection signal="time_freeze" from="Player" to="ChainChomp1" method="_on_Player_time_freeze"]
+
+[connection signal="time_freeze" from="Player" to="Enemy" method="_on_Player_time_freeze"]
+
 [connection signal="time_freeze" from="Player" to="Enemy4" method="_on_Player_time_freeze"]
+
+[connection signal="time_freeze" from="Player" to="Enemy2" method="_on_Player_time_freeze"]
+
+[connection signal="time_freeze" from="Player" to="Enemy3" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze" from="Player" to="Fackel" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze" from="Player" to="Fackel1" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze" from="Player" to="DackelCannon4" method="_on_Player_time_freeze"]
-
 [connection signal="time_freeze" from="Player" to="DackelCannon3" method="_on_Player_time_freeze"]
+
+[connection signal="time_freeze" from="Player" to="DackelCannon4" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze_end" from="Player" to="Timer" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="Enemy1" method="_on_Player_time_freeze_end"]
 
-[connection signal="time_freeze_end" from="Player" to="Enemy" method="_on_Player_time_freeze_end"]
-
-[connection signal="time_freeze_end" from="Player" to="Enemy3" method="_on_Player_time_freeze_end"]
-
-[connection signal="time_freeze_end" from="Player" to="Enemy2" method="_on_Player_time_freeze_end"]
-
 [connection signal="time_freeze_end" from="Player" to="ChainChomp" method="_on_Player_time_freeze_end"]
-
-[connection signal="time_freeze_end" from="Player" to="ChainChomp1" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="Enemy5" method="_on_Player_time_freeze_end"]
 
+[connection signal="time_freeze_end" from="Player" to="ChainChomp1" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="Enemy" method="_on_Player_time_freeze_end"]
+
 [connection signal="time_freeze_end" from="Player" to="Enemy4" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="Enemy2" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="Enemy3" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="Fackel" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="Fackel1" method="_on_Player_time_freeze_end"]
 
-[connection signal="time_freeze_end" from="Player" to="DackelCannon4" method="_on_Player_time_freeze_end"]
-
 [connection signal="time_freeze_end" from="Player" to="DackelCannon3" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="DackelCannon4" method="_on_Player_time_freeze_end"]
 
 
 [editable path="Enemy"]
