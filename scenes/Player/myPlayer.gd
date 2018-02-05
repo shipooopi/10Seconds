@@ -45,13 +45,13 @@ var freeze_screen
 var freeze_screen_path
 
 var start_life = [1,2,3,4]
-var life setget set_life
+var life = 0 setget set_life
 
 var time_freeze_time_array = [0,30,60,90]
-var time_freeze_time
+var time_freeze_time = 0
 var time_freeze_used = false
 
-var damage
+var damage = 0
 var damage_Array = [0,2,3,6]
 
 var playerInsideEnemy = false
@@ -65,15 +65,13 @@ signal time_freeze_end
 var shoot_timer
 const SHOOT_TIMER_MAX = 3
 
+var got_skills = false
 
 func _ready():
 	Globals.set("gameOver", false)
 	set_process(true)
 	set_process_input(true)
 	sprite_node = get_node("Sprite")
-	set_life(start_life[SaveFile._get_save_dictionary()["progress"]["life"]])
-	time_freeze_time = time_freeze_time_array[SaveFile._get_save_dictionary()["progress"]["magic"]]
-	damage = damage_Array[SaveFile._get_save_dictionary()["progress"]["attack"]]
 	shoot_timer = SHOOT_TIMER_MAX
 	
 	
@@ -124,6 +122,11 @@ func _input(event):
 		state = "shoot"
  
 func _process(delta):
+	if(not got_skills):
+		set_life(start_life[SaveFile._get_save_dictionary()["progress"]["life"]])
+		time_freeze_time = time_freeze_time_array[SaveFile._get_save_dictionary()["progress"]["magic"]]
+		damage = damage_Array[SaveFile._get_save_dictionary()["progress"]["attack"]]
+		got_skills = true
 
 	if input_direction:
 		direction = input_direction

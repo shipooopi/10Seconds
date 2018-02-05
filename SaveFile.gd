@@ -57,13 +57,10 @@ func _get_save_dictionary():
 	pass
 	
 func set_magic(newValue):
-	config_file.set_value("progress", "magic", newValue)
-	config_file.save(SAVE_PATH)
+	save_dictionary["progress"]["magic"] = newValue
 	
 func set_life(newValue):
-	config_file.set_value("progress", "life", newValue)
-	config_file.save(SAVE_PATH)
+	save_dictionary["progress"]["life"] = newValue
 	
 func set_attack(newValue):
-	config_file.set_value("progress", "attack", newValue)
-	config_file.save(SAVE_PATH)
+	save_dictionary["progress"]["attack"] = newValue

@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://scenes/WorldMap/WorldMap.gd" type="Script" id=1]
-[ext_resource path="res://fonts/import/PressStart2P_10_white.fnt" type="BitmapFont" id=2]
-[ext_resource path="res://scenes/WorldMap/deleteSaveButton.gd" type="Script" id=3]
+[ext_resource path="res://completed.png" type="Texture" id=2]
+[ext_resource path="res://fonts/import/PressStart2P_10_white.fnt" type="BitmapFont" id=3]
+[ext_resource path="res://scenes/WorldMap/deleteSaveButton.gd" type="Script" id=4]
+[ext_resource path="res://scripts/Level1LifeButton.gd" type="Script" id=5]
+[ext_resource path="res://scripts/Level1AttackButton.gd" type="Script" id=6]
+[ext_resource path="res://scripts/Level1MagicButton.gd" type="Script" id=7]
 
 [node name="WorldMap" type="Node2D"]
 
@@ -23,6 +27,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 text = "Level 1"
+icon = ExtResource( 2 )
 flat = false
 
 [node name="clear save" type="Button" parent="."]
@@ -35,13 +40,13 @@ margin/left = 838.0
 margin/top = 501.0
 margin/right = 960.0
 margin/bottom = 541.0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 text = "Delete Save"
 flat = false
-script/script = ExtResource( 3 )
+script/script = ExtResource( 4 )
 
 [node name="Level1Life" type="Button" parent="."]
 
@@ -53,12 +58,19 @@ margin/left = 630.0
 margin/top = 110.0
 margin/right = 710.0
 margin/bottom = 160.0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 text = "Life"
 flat = false
+script/script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Level1Life"]
+
+visibility/visible = false
+transform/pos = Vector2( 110, 24.5 )
+texture = ExtResource( 2 )
 
 [node name="LevelBoss" type="Button" parent="."]
 
@@ -70,7 +82,7 @@ margin/left = 440.0
 margin/top = 245.0
 margin/right = 520.0
 margin/bottom = 295.0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -85,14 +97,21 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 250.0
 margin/top = 110.0
-margin/right = 330.0
-margin/bottom = 160.0
-custom_fonts/font = ExtResource( 2 )
+margin/right = 334.0
+margin/bottom = 159.0
+custom_fonts/font = ExtResource( 3 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 text = "Attack"
 flat = false
+script/script = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="Level1Attack"]
+
+visibility/visible = false
+transform/pos = Vector2( 110, 24.5 )
+texture = ExtResource( 2 )
 
 [node name="Level1Magic" type="Button" parent="."]
 
@@ -104,12 +123,19 @@ margin/left = 440.0
 margin/top = 380.0
 margin/right = 520.0
 margin/bottom = 430.0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 text = "Magic"
 flat = false
+script/script = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Level1Magic"]
+
+visibility/visible = false
+transform/pos = Vector2( 110, 24 )
+texture = ExtResource( 2 )
 
 [connection signal="pressed" from="Level1" to="." method="_on_Level1_pressed"]
 
