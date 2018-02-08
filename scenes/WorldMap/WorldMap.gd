@@ -5,6 +5,7 @@ var instructions
 
 func _ready():
 	get_tree().set_pause(false)
+	SaveFile.load_settings()
 	if(SaveFile.is_empty()):
 		instructions = scn_instruction.instance()
 		utils.main_node.add_child(instructions)

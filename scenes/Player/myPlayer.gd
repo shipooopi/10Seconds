@@ -37,7 +37,7 @@ export var MAX_FALL_SPEED_WATER = 500
 export var MAX_JUMP_COUNT = 2
 
 const scn_bullet = preload("res://scenes/Bullet/BulletTest.tscn")
-const scn_youDead = preload("res://scenes/YouDead/YouDead.tscn")
+var scn_youDead = preload("res://scenes/YouDead/YouDead.tscn") setget set_deadScn
 const scn_freeze = preload("res://scenes/Freeze/Freeze.tscn")
 const scn_hit = preload("res://scenes/GotHit/GotHit.tscn")
 
@@ -300,4 +300,7 @@ func _in_water():
 	
 func _out_water():
 	inWater = false
+	
+func set_deadScn(scn):
+	scn_youDead = scn
 

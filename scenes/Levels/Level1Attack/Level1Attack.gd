@@ -3,10 +3,11 @@ extends Node2D
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
+var scn_youDead = preload("res://scenes/YouDead/YouDeadAttack.tscn")
 
 func _ready():
-	# Called every time the node is added to the scene.
 	# Initialization here
+	get_node("Player").set_deadScn(scn_youDead)
 	SaveFile.set_attack(1)
 	SaveFile.set_magic(0)
 	SaveFile.set_life(0)

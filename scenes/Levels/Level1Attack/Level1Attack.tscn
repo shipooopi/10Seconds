@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=1]
+[gd_scene load_steps=21 format=1]
 
 [ext_resource path="res://scenes/Levels/Level1Attack/Level1Attack.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Tileset/Background/BackgroundTiles.tscn" type="PackedScene" id=2]
@@ -9,14 +9,15 @@
 [ext_resource path="res://scenes/DackelCannon/DackelCannon.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Enemy/Enemy.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Timer/Timer.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/ChainChomp/ChainChomp.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/Tileset/OneWays/OneWayDownTileMap.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/Tileset/OneWays/OneWayLeftTileMap.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/Tileset/OneWays/OneWayUpTileMap.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/Tileset/OneWays/OneWayRightTileMap.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/WaterNode/WaterNode.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scenes/LevelEnd/LevelEnd.tscn" type="PackedScene" id=16]
-[ext_resource path="res://scenes/Player/myPlayer.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/Timer/TimerAttack.gd" type="Script" id=10]
+[ext_resource path="res://scenes/ChainChomp/ChainChomp.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/Tileset/OneWays/OneWayDownTileMap.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/Tileset/OneWays/OneWayLeftTileMap.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/Tileset/OneWays/OneWayUpTileMap.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/Tileset/OneWays/OneWayRightTileMap.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/WaterNode/WaterNode.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/LevelEnd/LevelEnd.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/Player/myPlayer.tscn" type="PackedScene" id=18]
 
 [sub_resource type="Animation" id=1]
 
@@ -192,8 +193,9 @@ pointB = Vector2( 736, 464 )
 [node name="Timer" parent="." instance=ExtResource( 9 )]
 
 editor/display_folded = true
+script/script = ExtResource( 10 )
 
-[node name="ChainChomp" parent="." instance=ExtResource( 10 )]
+[node name="ChainChomp" parent="." instance=ExtResource( 11 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 432, 496 )
@@ -203,51 +205,51 @@ transform/pos = Vector2( 432, 496 )
 collision/layers = 4
 collision/mask = 4
 
-[node name="ChainChomp1" parent="." instance=ExtResource( 10 )]
+[node name="ChainChomp1" parent="." instance=ExtResource( 11 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 864, 464 )
 
-[node name="OneWayDown" parent="." instance=ExtResource( 11 )]
+[node name="OneWayDown" parent="." instance=ExtResource( 12 )]
 
-[node name="OneWayLeft" parent="." instance=ExtResource( 12 )]
+[node name="OneWayLeft" parent="." instance=ExtResource( 13 )]
 
-[node name="OneWayUp" parent="." instance=ExtResource( 13 )]
+[node name="OneWayUp" parent="." instance=ExtResource( 14 )]
 
 tile_data = IntArray( 393217, 0, 393218, 1, 393219, 1, 393220, 2, 524302, 0, 524303, 1, 524304, 2, 720897, 0, 720898, 1, 720899, 1, 720900, 1, 720901, 2, 917518, 0, 917519, 2 )
 
-[node name="OneWayRight" parent="." instance=ExtResource( 14 )]
+[node name="OneWayRight" parent="." instance=ExtResource( 15 )]
 
 transform/pos = Vector2( -96, 0 )
 
-[node name="WaterNode" parent="." instance=ExtResource( 15 )]
+[node name="WaterNode" parent="." instance=ExtResource( 16 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 560, 384 )
 transform/scale = Vector2( 1, 1 )
 
-[node name="WaterNode1" parent="." instance=ExtResource( 15 )]
+[node name="WaterNode1" parent="." instance=ExtResource( 16 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 560, 448 )
 transform/scale = Vector2( 1, 1 )
 
-[node name="LevelEnd" parent="." instance=ExtResource( 16 )]
+[node name="LevelEnd" parent="." instance=ExtResource( 17 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 688, 496 )
 
-[node name="LevelEnd1" parent="." instance=ExtResource( 16 )]
+[node name="LevelEnd1" parent="." instance=ExtResource( 17 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 688, 464 )
 
-[node name="LevelEnd2" parent="." instance=ExtResource( 16 )]
+[node name="LevelEnd2" parent="." instance=ExtResource( 17 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 688, 432 )
 
-[node name="Player" parent="." instance=ExtResource( 17 )]
+[node name="Player" parent="." instance=ExtResource( 18 )]
 
 transform/pos = Vector2( 48, 496 )
 
@@ -317,25 +319,25 @@ transform/pos = Vector2( 48, 496 )
 
 [connection signal="time_freeze" from="Player" to="Timer" method="_on_Player_time_freeze"]
 
+[connection signal="time_freeze" from="Player" to="ChainChomp1" method="_on_Player_time_freeze"]
+
 [connection signal="time_freeze" from="Player" to="Enemy2" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze" from="Player" to="Enemy1" method="_on_Player_time_freeze"]
+[connection signal="time_freeze" from="Player" to="ChainChomp" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze" from="Player" to="ChainChomp1" method="_on_Player_time_freeze"]
+[connection signal="time_freeze" from="Player" to="Enemy" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze" from="Player" to="Enemy4" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze" from="Player" to="Enemy3" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze" from="Player" to="Enemy" method="_on_Player_time_freeze"]
-
 [connection signal="time_freeze" from="Player" to="Enemy5" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze" from="Player" to="ChainChomp" method="_on_Player_time_freeze"]
-
-[connection signal="time_freeze" from="Player" to="Fackel1" method="_on_Player_time_freeze"]
+[connection signal="time_freeze" from="Player" to="Enemy1" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze" from="Player" to="Fackel" method="_on_Player_time_freeze"]
+
+[connection signal="time_freeze" from="Player" to="Fackel1" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze" from="Player" to="DackelCannon4" method="_on_Player_time_freeze"]
 
@@ -343,25 +345,25 @@ transform/pos = Vector2( 48, 496 )
 
 [connection signal="time_freeze_end" from="Player" to="Timer" method="_on_Player_time_freeze_end"]
 
+[connection signal="time_freeze_end" from="Player" to="ChainChomp1" method="_on_Player_time_freeze_end"]
+
 [connection signal="time_freeze_end" from="Player" to="Enemy2" method="_on_Player_time_freeze_end"]
 
-[connection signal="time_freeze_end" from="Player" to="Enemy1" method="_on_Player_time_freeze_end"]
+[connection signal="time_freeze_end" from="Player" to="ChainChomp" method="_on_Player_time_freeze_end"]
 
-[connection signal="time_freeze_end" from="Player" to="ChainChomp1" method="_on_Player_time_freeze_end"]
+[connection signal="time_freeze_end" from="Player" to="Enemy" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="Enemy4" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="Enemy3" method="_on_Player_time_freeze_end"]
 
-[connection signal="time_freeze_end" from="Player" to="Enemy" method="_on_Player_time_freeze_end"]
-
 [connection signal="time_freeze_end" from="Player" to="Enemy5" method="_on_Player_time_freeze_end"]
 
-[connection signal="time_freeze_end" from="Player" to="ChainChomp" method="_on_Player_time_freeze_end"]
-
-[connection signal="time_freeze_end" from="Player" to="Fackel1" method="_on_Player_time_freeze_end"]
+[connection signal="time_freeze_end" from="Player" to="Enemy1" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="Fackel" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="Fackel1" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="DackelCannon4" method="_on_Player_time_freeze_end"]
 
