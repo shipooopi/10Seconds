@@ -1,7 +1,7 @@
 extends Node
 
 # Change to "user://Config.cfg" later!
-const SAVE_PATH = "res://Config.cfg"
+const SAVE_PATH = "user://Config.cfg"
 
 var config_file = ConfigFile.new()
 var save_dictionary = {
