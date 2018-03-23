@@ -36,6 +36,10 @@ export var MAX_FALL_SPEED_WATER = 500
 # TODO: set to var to change on runtime
 export var MAX_JUMP_COUNT = 2
 
+var ghost_jump_timer = 0
+const MAX_GHOST_JUMP_TIMER = 3
+
+
 const scn_bullet = preload("res://scenes/Bullet/BulletTest.tscn")
 var scn_youDead = preload("res://scenes/YouDead/YouDead.tscn") setget set_deadScn
 const scn_freeze = preload("res://scenes/Freeze/Freeze.tscn")
@@ -123,9 +127,14 @@ func _input(event):
  
 func _process(delta):
 	if(not got_skills):
-		set_life(start_life[SaveFile._get_save_dictionary()["progress"]["life"]])
-		time_freeze_time = time_freeze_time_array[SaveFile._get_save_dictionary()["progress"]["magic"]]
-		damage = damage_Array[SaveFile._get_save_dictionary()["progress"]["attack"]]
+		if(SaveFile.get_easy_mode()):
+			set_life(start_life[SaveFile._get_save_dictionary()["progressEasy"]["life"]])
+			time_freeze_time = time_freeze_time_array[SaveFile._get_save_dictionary()["progressEasy"]["magic"]]
+			damage = damage_Array[SaveFile._get_save_dictionary()["progressEasy"]["attack"]]
+		else:
+			set_life(start_life[SaveFile._get_save_dictionary()["progress"]["life"]])
+			time_freeze_time = time_freeze_time_array[SaveFile._get_save_dictionary()["progress"]["magic"]]
+			damage = damage_Array[SaveFile._get_save_dictionary()["progress"]["attack"]]
 		got_skills = true
 
 	if input_direction:
@@ -192,10 +201,14 @@ func _process(delta):
 		
 		if (normal.y <= -0.7):
 			jump_count = 0
+			ghost_jump_timer = 0
 	
 	if( (not is_colliding() or get_collision_normal().y > -0.7) && speed.y > 0 && jump_count == 0):
-		# Todo: ghost jump
-		jump_count += 1
+		#ghost jump
+		ghost_jump_timer += 1
+		if(ghost_jump_timer == MAX_GHOST_JUMP_TIMER):
+			jump_count += 1
+			ghost_jump_timer = 0
 	
 	if(invis_timer > 0):
 		if(invis_timer % 15 == 0):

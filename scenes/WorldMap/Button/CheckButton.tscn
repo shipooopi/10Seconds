@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://fonts/import/PressStart2P_10_white.fnt" type="BitmapFont" id=1]
+[ext_resource path="res://scenes/WorldMap/switchToEasy.gd" type="Script" id=2]
+
+[node name="CheckButton" type="CheckButton"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 372.0
+margin/top = 11.0
+margin/right = 538.0
+margin/bottom = 33.0
+custom_fonts/font = ExtResource( 1 )
+toggle_mode = true
+is_pressed = true
+enabled_focus_mode = 2
+shortcut = null
+text = "Hard Mode"
+flat = false
+align = 0
+script/script = ExtResource( 2 )
+
+[connection signal="toggled" from="." to="." method="_on_CheckButton_toggled"]
+
+

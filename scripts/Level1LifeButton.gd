@@ -6,15 +6,25 @@ extends Button
 
 func _ready():
 	SaveFile.load_settings()
-	if(SaveFile._get_save_dictionary()["progress"]["life"] > 0):
-		get_node("Sprite").set_hidden(false)
+	if(SaveFile.get_easy_mode()):
+		if(SaveFile._get_save_dictionary()["progressEasy"]["life"] > 0):
+			get_node("Sprite").set_hidden(false)
+	else:
+		if(SaveFile._get_save_dictionary()["progress"]["life"] > 0):
+			get_node("Sprite").set_hidden(false)
 	pass
 
 
 func _on_clear_save_pressed():
 	SaveFile.load_settings()
-	if(SaveFile._get_save_dictionary()["progress"]["life"] > 0):
-		get_node("Sprite").set_hidden(false)
+	if(SaveFile.get_easy_mode()):
+		if(SaveFile._get_save_dictionary()["progressEasy"]["life"] > 0):
+			get_node("Sprite").set_hidden(false)
+		else:
+			get_node("Sprite").set_hidden(true)
 	else:
-		get_node("Sprite").set_hidden(true)
+		if(SaveFile._get_save_dictionary()["progress"]["life"] > 0):
+			get_node("Sprite").set_hidden(false)
+		else:
+			get_node("Sprite").set_hidden(true)
 	pass # replace with function body

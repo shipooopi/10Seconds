@@ -9,6 +9,17 @@ var save_dictionary = {
 		"attack" : 0,
 		"life" : 0,
 		"magic" : 0
+	},
+	"progressEasy": {
+		"attack" : 0,
+		"life" : 0,
+		"magic" : 0
+	},	
+	"switchToEasy": {
+		"EasyMode" : 0
+	},
+	"introduction": {
+		"shown" : 0
 	}
 } setget , _get_save_dictionary
 
@@ -49,8 +60,13 @@ func load_settings():
 		
 	for section in save_dictionary.keys():
 		for key in save_dictionary[section]:
-			save_dictionary[section][key] = config_file.get_value(section, key, null)
-			print(str(save_dictionary[section][key]))
+			var valueToSave = config_file.get_value(section, key, null)
+			if(valueToSave != null):
+				save_dictionary[section][key] = valueToSave
+			else:
+				save_settings()
+				break
+
 
 func _get_save_dictionary():
 	return save_dictionary
@@ -64,3 +80,27 @@ func set_life(newValue):
 	
 func set_attack(newValue):
 	save_dictionary["progress"]["attack"] = newValue
+	
+func set_easy_magic(newValue):
+	save_dictionary["progressEasy"]["magic"] = newValue
+	
+func set_easy_life(newValue):
+	save_dictionary["progressEasy"]["life"] = newValue
+	
+func set_easy_attack(newValue):
+	save_dictionary["progressEasy"]["attack"] = newValue
+	
+func set_easy_mode(value):
+	if(value):
+		save_dictionary["switchToEasy"]["EasyMode"] = 1
+	else:
+		save_dictionary["switchToEasy"]["EasyMode"] = 0
+		
+func get_easy_mode():
+	return save_dictionary["switchToEasy"]["EasyMode"]
+	
+func set_introduction_shown(value):
+	save_dictionary["introduction"]["shown"] = value
+	
+func get_introduction_shown():
+	return save_dictionary["introduction"]["shown"]
