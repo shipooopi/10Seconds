@@ -45,7 +45,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 
 resource/name = "fly"
 length = 4.0
@@ -93,7 +93,7 @@ transform/pos = Vector2( 416, 496 )
 [node name="Fackel5" parent="." instance=ExtResource( 3 )]
 
 process/pause_mode = 1
-transform/pos = Vector2( 352, 64 )
+transform/pos = Vector2( 288, 80 )
 
 [node name="Fackel6" parent="." instance=ExtResource( 3 )]
 
@@ -119,12 +119,6 @@ tile_data = IntArray( 196628, 0, 196629, 0, 196630, 0, 327707, 2, 327708, 3, 393
 
 editor/display_folded = true
 transform/pos = Vector2( 240, 496 )
-direction = 1
-
-[node name="DackelCannon4" parent="." instance=ExtResource( 7 )]
-
-editor/display_folded = true
-transform/pos = Vector2( 400, 464 )
 direction = 1
 
 [node name="Enemy" parent="." instance=ExtResource( 8 )]
@@ -175,7 +169,7 @@ editor/display_folded = true
 
 [node name="AnimationPlayer" parent="Enemy2"]
 
-anims/fly = SubResource( 3 )
+anims/fly = SubResource( 2 )
 autoplay = "fly"
 
 [node name="Timer" parent="." instance=ExtResource( 9 )]
@@ -201,7 +195,7 @@ tile_data = IntArray( 917528, 0, 983064, 2 )
 
 [node name="OneWayUp" parent="." instance=ExtResource( 14 )]
 
-tile_data = IntArray( 196609, 0, 196610, 2, 983052, 3 )
+tile_data = IntArray( 196609, 0, 196610, 2 )
 
 [node name="OneWayRight" parent="." instance=ExtResource( 15 )]
 
@@ -278,49 +272,45 @@ transform/pos = Vector2( 48, 496 )
 
 [connection signal="body_enter" from="LevelEnd2/Area2D" to="Timer" method="_on_Area2D_body_enter"]
 
-[connection signal="time_freeze" from="Player" to="Enemy2" method="_on_Player_time_freeze"]
-
-[connection signal="time_freeze" from="Player" to="Enemy" method="_on_Player_time_freeze"]
-
-[connection signal="time_freeze" from="Player" to="ChainChomp" method="_on_Player_time_freeze"]
+[connection signal="time_freeze" from="Player" to="Timer" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze" from="Player" to="DackelCannon3" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze" from="Player" to="DackelCannon4" method="_on_Player_time_freeze"]
+[connection signal="time_freeze" from="Player" to="Enemy" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze" from="Player" to="Fackel5" method="_on_Player_time_freeze"]
+[connection signal="time_freeze" from="Player" to="Enemy2" method="_on_Player_time_freeze"]
+
+[connection signal="time_freeze" from="Player" to="ChainChomp" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze" from="Player" to="Fackel4" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze" from="Player" to="Fackel2" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze" from="Player" to="Fackel6" method="_on_Player_time_freeze"]
-
 [connection signal="time_freeze" from="Player" to="Fackel" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze" from="Player" to="Timer" method="_on_Player_time_freeze"]
+[connection signal="time_freeze" from="Player" to="Fackel5" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze_end" from="Player" to="Enemy2" method="_on_Player_time_freeze_end"]
+[connection signal="time_freeze" from="Player" to="Fackel6" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze_end" from="Player" to="Enemy" method="_on_Player_time_freeze_end"]
-
-[connection signal="time_freeze_end" from="Player" to="ChainChomp" method="_on_Player_time_freeze_end"]
+[connection signal="time_freeze_end" from="Player" to="Timer" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="DackelCannon3" method="_on_Player_time_freeze_end"]
 
-[connection signal="time_freeze_end" from="Player" to="DackelCannon4" method="_on_Player_time_freeze_end"]
+[connection signal="time_freeze_end" from="Player" to="Enemy" method="_on_Player_time_freeze_end"]
 
-[connection signal="time_freeze_end" from="Player" to="Fackel5" method="_on_Player_time_freeze_end"]
+[connection signal="time_freeze_end" from="Player" to="Enemy2" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="ChainChomp" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="Fackel4" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="Fackel2" method="_on_Player_time_freeze_end"]
 
-[connection signal="time_freeze_end" from="Player" to="Fackel6" method="_on_Player_time_freeze_end"]
-
 [connection signal="time_freeze_end" from="Player" to="Fackel" method="_on_Player_time_freeze_end"]
 
-[connection signal="time_freeze_end" from="Player" to="Timer" method="_on_Player_time_freeze_end"]
+[connection signal="time_freeze_end" from="Player" to="Fackel5" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="Fackel6" method="_on_Player_time_freeze_end"]
 
 
 [editable path="Enemy"]
