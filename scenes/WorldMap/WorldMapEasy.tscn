@@ -1,7 +1,7 @@
-[gd_scene load_steps=32 format=1]
+[gd_scene load_steps=30 format=1]
 
 [ext_resource path="res://scenes/WorldMap/WorldMap.gd" type="Script" id=1]
-[ext_resource path="res://scenes/WorldMap/imports/Map_Vincent.tex" type="Texture" id=2]
+[ext_resource path="res://scenes/WorldMap/imports/Map_mit_overlay.tex" type="Texture" id=2]
 [ext_resource path="res://completed.png" type="Texture" id=3]
 [ext_resource path="res://fonts/import/PressStart2P_10_white.fnt" type="BitmapFont" id=4]
 [ext_resource path="res://scenes/WorldMap/deleteSaveButton.gd" type="Script" id=5]
@@ -12,7 +12,6 @@
 [ext_resource path="res://scripts/BossButton.gd" type="Script" id=10]
 [ext_resource path="res://scripts/Level1AttackButton.gd" type="Script" id=11]
 [ext_resource path="res://scripts/Level1MagicButton.gd" type="Script" id=12]
-[ext_resource path="res://scenes/WorldMap/imports/overlay.tex" type="Texture" id=13]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -142,23 +141,6 @@ content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
-
-[sub_resource type="StyleBoxTexture" id=2]
-
-content_margin/left = -1.0
-content_margin/right = -1.0
-content_margin/top = -1.0
-content_margin/bottom = -1.0
-texture = ExtResource( 13 )
-margin/left = 0.0
-margin/right = 0.0
-margin/top = 0.0
-margin/bottom = 0.0
-expand_margin/left = 0.0
-expand_margin/right = 0.0
-expand_margin/top = 0.0
-expand_margin/bottom = 0.0
-draw_center = true
 
 [node name="WorldMapEasy" type="Node2D"]
 
@@ -326,18 +308,6 @@ text = "Press 'I' to see instructions."
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-
-[node name="Grid" type="Panel" parent="."]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 960.0
-margin/bottom = 540.0
-custom_styles/panel = SubResource( 2 )
 
 [connection signal="pressed" from="Level1" to="." method="_on_Level1_pressed"]
 
