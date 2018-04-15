@@ -4,14 +4,22 @@ extends Button
 # var a = 2
 # var b = "textvar"
 
+var icon_beaten = preload("res://scenes/WorldMap/imports/Magic.tex")
+var icon_hover = preload("res://scenes/WorldMap/imports/Hover.tex")
+var icon = preload("res://scenes/WorldMap/imports/Castle.tex")
+var not_beaten = true
+var not_beaten_easy = true
+
 func _ready():
 	SaveFile.load_settings()
 	if(SaveFile.get_easy_mode()):
 		if(SaveFile._get_save_dictionary()["progressEasy"]["magic"] > 0):
-			get_node("Sprite").set_hidden(false)
+			not_beaten_easy = false
+			self.set_button_icon(icon_beaten)
 	else:
 		if(SaveFile._get_save_dictionary()["progress"]["magic"] > 0):
-			get_node("Sprite").set_hidden(false)
+			not_beaten = false
+			self.set_button_icon(icon_beaten)
 	pass
 
 
@@ -20,12 +28,30 @@ func _on_clear_save_pressed():
 	SaveFile.load_settings()
 	if(SaveFile.get_easy_mode()):
 		if(SaveFile._get_save_dictionary()["progressEasy"]["magic"] > 0):
-			get_node("Sprite").set_hidden(false)
+			not_beaten_easy = false
+			self.set_button_icon(icon_beaten)
 		else:
-			get_node("Sprite").set_hidden(true)
+			not_beaten_easy = true
+			self.set_button_icon(icon)
 	else:
 		if(SaveFile._get_save_dictionary()["progress"]["magic"] > 0):
-			get_node("Sprite").set_hidden(false)
+			not_beaten = false
+			self.set_button_icon(icon_beaten)
 		else:
-			get_node("Sprite").set_hidden(true)
+			not_beaten_easy = true
+			self.set_button_icon(icon)
+	pass # replace with function body
+
+
+func _on_Level1Magic_mouse_enter():
+	SaveFile.load_settings()
+	if((SaveFile.get_easy_mode() and not_beaten_easy) or (not SaveFile.get_easy_mode() and not_beaten)):
+		self.set_button_icon(icon_hover)
+	pass # replace with function body
+
+
+func _on_Level1Magic_mouse_exit():
+	SaveFile.load_settings()
+	if((SaveFile.get_easy_mode() and not_beaten_easy) or (not SaveFile.get_easy_mode() and not_beaten)):		
+		self.set_button_icon(icon)
 	pass # replace with function body
