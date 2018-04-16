@@ -2,22 +2,29 @@ extends KinematicBody2D
 
 export var life = 3 setget set_life
 var sprite_node
-var collision_node
+var area_node
 var playDeath = false
 var playDeathTimer = 30
 var cannon
+var collision_timer = 3
+var collision_activated = false
 
 export var velocity = Vector2()
 
 
 func _ready():
-
-	sprite_node = get_node("Sprite")#
-	collision_node = get_node("Area2D/CollisionShape2D")
+	sprite_node = get_node("Sprite")
+	area_node = get_node("Area2D")
+	area_node.set_scale(Vector2(0,0))
 	set_process(true)
 	pass
 	
 func _process(delta):
+	if(collision_timer > 0):
+		collision_timer -= 1
+	elif not collision_activated: 
+		area_node.set_scale(Vector2(1,0.182494))
+		collision_activated = true
 	translate(velocity * delta)
 	if(playDeath):
 		playDeathTimer -= 1

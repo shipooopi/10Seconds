@@ -16,12 +16,12 @@
 [ext_resource path="res://scenes/Bullet/animation_ducl_death/import/Duclcanon_splash0008.tex" type="Texture" id=14]
 [ext_resource path="res://globals/animatedSprite.gd" type="Script" id=15]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 23 )
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
@@ -50,7 +50,7 @@ velocity = Vector2( 300, 0 )
 transform/pos = Vector2( 0, -0.202745 )
 transform/scale = Vector2( 1, 0.182494 )
 input/pickable = true
-shapes/0/shape = SubResource( 2 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1.05891, 0, -1.38114 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -64,13 +64,13 @@ collision/mask = 13
 
 transform/pos = Vector2( 0, -1.38114 )
 transform/scale = Vector2( 1, 1.05891 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 
-frames = SubResource( 1 )
+frames = SubResource( 2 )
 animation = "default"
 script/script = ExtResource( 15 )
 

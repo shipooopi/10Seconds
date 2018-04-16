@@ -4,8 +4,8 @@ extends Button
 # var a = 2
 # var b = "textvar"
 
-var icon_beaten = preload("res://scenes/WorldMap/imports/Attack.tex")
-var icon_hover = preload("res://scenes/WorldMap/imports/Hover.tex")
+var icon_beaten = preload("res://scenes/WorldMap/Attack.png")
+var icon_hover = preload("res://scenes/WorldMap/Hover.png")
 var icon = preload("res://scenes/WorldMap/imports/Castle.tex")
 var not_beaten = true
 var not_beaten_easy = true

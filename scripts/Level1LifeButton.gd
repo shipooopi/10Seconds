@@ -3,8 +3,8 @@ extends Button
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-var icon_beaten = preload("res://scenes/WorldMap/imports/Life.tex")
-var icon_hover = preload("res://scenes/WorldMap/imports/Hover.tex")
+var icon_beaten = preload("res://scenes/WorldMap/Life.png")
+var icon_hover = preload("res://scenes/WorldMap/Hover.png")
 var icon = preload("res://scenes/WorldMap/imports/Castle.tex")
 var not_beaten = true
 var not_beaten_easy = true

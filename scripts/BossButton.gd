@@ -4,7 +4,7 @@ extends Button
 # var a = 2
 # var b = "textvar"
 
-var icon_hover = preload("res://scenes/WorldMap/imports/Boss_hover.tex")
+var icon_hover = preload("res://scenes/WorldMap/Boss_hover.png")
 var icon = preload("res://scenes/WorldMap/imports/boss.tex")
 
 func _ready():
