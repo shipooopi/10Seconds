@@ -311,13 +311,13 @@ margin/bottom = 44.0
 
 [connection signal="pressed" from="Level1" to="." method="_on_Level1_pressed"]
 
+[connection signal="pressed" from="clear save" to="Level1Magic" method="_on_clear_save_pressed"]
+
 [connection signal="pressed" from="clear save" to="clear save" method="_on_clear_save_pressed"]
 
 [connection signal="pressed" from="clear save" to="Level1Attack" method="_on_clear_save_pressed"]
 
 [connection signal="pressed" from="clear save" to="Level1Life" method="_on_clear_save_pressed"]
-
-[connection signal="pressed" from="clear save" to="Level1Magic" method="_on_clear_save_pressed"]
 
 [connection signal="mouse_enter" from="Level1Life" to="Level1Life" method="_on_Level1Life_mouse_enter"]
 

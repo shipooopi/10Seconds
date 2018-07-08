@@ -65,8 +65,6 @@ transform/pos = Vector2( 48, 496 )
 
 [node name="GurkenTiles" parent="." instance=ExtResource( 6 )]
 
-tile_data = IntArray(  )
-
 [node name="DackelCannon3" parent="." instance=ExtResource( 7 )]
 
 editor/display_folded = true
@@ -116,13 +114,9 @@ collision/mask = 4
 
 [node name="OneWayDown" parent="." instance=ExtResource( 11 )]
 
-tile_data = IntArray(  )
-
 [node name="OneWayLeft" parent="." instance=ExtResource( 12 )]
 
 [node name="OneWayUp" parent="." instance=ExtResource( 13 )]
-
-tile_data = IntArray(  )
 
 [node name="OneWayRight" parent="." instance=ExtResource( 14 )]
 
@@ -134,17 +128,17 @@ editor/display_folded = true
 transform/pos = Vector2( 32, -32 )
 transform/scale = Vector2( 1, 1 )
 
-[connection signal="time_freeze" from="Player" to="Fackel" method="_on_Player_time_freeze"]
-
 [connection signal="time_freeze" from="Player" to="Timer" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze" from="Player" to="Enemy" method="_on_Player_time_freeze"]
 
-[connection signal="time_freeze_end" from="Player" to="Fackel" method="_on_Player_time_freeze_end"]
+[connection signal="time_freeze" from="Player" to="Fackel" method="_on_Player_time_freeze"]
 
 [connection signal="time_freeze_end" from="Player" to="Timer" method="_on_Player_time_freeze_end"]
 
 [connection signal="time_freeze_end" from="Player" to="Enemy" method="_on_Player_time_freeze_end"]
+
+[connection signal="time_freeze_end" from="Player" to="Fackel" method="_on_Player_time_freeze_end"]
 
 [connection signal="body_enter" from="Enemy/Area2D" to="Player" method="_on_Area2D_body_enter"]
 

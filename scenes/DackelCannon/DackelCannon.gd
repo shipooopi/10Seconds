@@ -44,7 +44,7 @@ func create_bullet(pos):
 	
 	
 func _shoot():
-	create_bullet(position.get_global_pos())
+	create_bullet(Vector2(position.get_global_pos().x + (direction * 3), position.get_global_pos().y))
 
 func _on_Timer_timeout():
 	_shoot()
